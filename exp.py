@@ -13,6 +13,6 @@ class exp:
     opdos = [None, None]
 
     def __init__(self, NovoTipo, NovoOpdos=[0, 0]):
-      self.tipo = NovoTipo
-      if type(NovoOpdos) == list:
-          self.opdos = NovoOpdos
+        self.tipo = NovoTipo
+        if type(NovoOpdos) == list:
+            self.opdos = NovoOpdos
