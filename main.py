@@ -24,5 +24,25 @@ x_min = 1
 # Quantidade padrao de equacoes
 eqs   = 1
 
+# Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
+# contagem de operacoes utilizadas
+def escolher_op():
+    # Alerta o python o uso de variaveis ja existentes
+    global operacoes_disponiveis
+    global operacoes_utilizadas
+
+    # Escolha um indice das operacoes
+    indice_ops = randint(0, 6)
+
+    # Se a operacao do indice escolhido estiver disponivel
+    if operacoes_disponiveis[indice_ops] - operacoes_utilizadas[indice_ops] > 0:
+        # Atualize a lista de contagem
+        operacoes_utilizadas[indice_ops] += 1
+
+        # Converta o indice no numero da operacao e retorne-o
+        return indice_ops - 3
+    # Senao... repita o processo
+    return escolher_op()
+
 if __name__ == "__main__":
   igualdade_raiz = exp(IGUALDADE)
