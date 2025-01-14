@@ -6,6 +6,9 @@ import random as r
 # ocorrencias de OPERACAO nas equacoes
 operacoes_disponiveis = [0, 1, 1, 0, 1, 1, 0]
 
+# Lista de contagem das operacoes ja utilizadas
+operacoes_utilizadas = [0, 0, 0, 0, 0, 0, 0]
+
 # Limite maximo dos operandos e coeficientes inseridos nas equacoes
 k_max = 10
 
