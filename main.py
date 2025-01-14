@@ -44,5 +44,23 @@ def escolher_op():
     # Senao... repita o processo
     return escolher_op()
 
+# Retorna o resultado da expressao fornecida apos calcular seus operandos,
+# recursivamente
+def resolver_exp(expr):
+    if expr.tipo == e.ADICAO:
+        return resolver_exp(expr.opdos[0]) + resolver_exp(expr.opdos[1])
+    if expr.tipo == e.SUBTRACAO:
+        return resolver_exp(expr.opdos[0]) - resolver_exp(expr.opdos[1])
+    if expr.tipo == e.MULTIPLICACAO:
+        return resolver_exp(expr.opdos[0]) * resolver_exp(expr.opdos[1])
+    if expr.tipo == e.DIVISAO:
+        return resolver_exp(expr.opdos[0]) / resolver_exp(expr.opdos[1])
+    if expr.tipo == e.POTENCIACAO:
+        return resolver_exp(expr.opdos[0]) ** resolver_exp(expr.opdos[1])
+    if expr.tipo == e.RADICIACAO:
+        return resolver_exp(expr.opdos[0]) ** (1/resolver_exp(expr.opdos[1]))
+    if expr.tipo == e.VALOR or expr.tipo == e.INCOGNITA:
+        return expr.opdos[0]
+
 if __name__ == "__main__":
   igualdade_raiz = exp(IGUALDADE)
