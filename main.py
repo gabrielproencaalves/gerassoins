@@ -63,4 +63,35 @@ def resolver_exp(expr):
         return expr.opdos[0]
 
 if __name__ == "__main__":
-  igualdade_raiz = exp(IGUALDADE)
+    # Alerta o python o uso de variaveis ja existentes
+    global operacoes_disponiveis
+    global operacoes_utilizadas
+
+    # Gere equacoes ate a eqs-esima
+    for eqnum in range(eqs):
+        operacoes_utilizadas = [0, 0, 0, 0, 0, 0, 0]
+
+        # Instancie a exp raiz, o sinal de igualdade
+        raiz = e.exp(e.IGUALDADE)
+
+        # Define um valor aleatorio para x
+        x = r.randint(x_min, x_max)
+
+        # Armazena este valor a esquerda da igualdade
+        raiz.opdos[0] = e.exp(e.INCOGNITA, [x])
+
+        # Enquanto houver operacoes disponiveis para a arvore
+        while(sum(operacoes_disponiveis) - sum(operacoes_utilizadas) > 0):
+            # Crie uma lista com os novos operandos
+            tmp_opdos = [raiz.opdos[0],
+                         e.exp(e.VALOR, [r.randint(k_min, k_max), 0])]
+
+            # e embaralhe-a
+            r.shuffle(tmp_opdos)
+
+            # Atribuir novo exp de operacao a arvore
+            raiz.opdos[0] = e.exp(escolher_op(), tmp_opdos)
+
+        # Calcular alteracoes aplicadas em x e armazenar noutro lado da
+        # igualdade
+        raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
