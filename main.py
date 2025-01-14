@@ -21,5 +21,8 @@ x_max = 10
 # Limite minimo de x, ou seja, do resultado das equacoes
 x_min = 1
 
+# Quantidade padrao de equacoes
+eqs   = 1
+
 if __name__ == "__main__":
   igualdade_raiz = exp(IGUALDADE)
