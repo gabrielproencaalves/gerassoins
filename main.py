@@ -1,3 +1,6 @@
+import exp as e
+import random as r
+
 # Lista do numero de repeticoes permitidas para cada operacao onde
 # operacoes_disponiveis[OPERACAO + 3] indica a quantidade permitida de
 # ocorrencias de OPERACAO nas equacoes
