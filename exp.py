@@ -10,9 +10,9 @@ INCOGNITA     = -VALOR
 
 class exp:
     tipo = None
-    opdos = []
+    opdos = [None, None]
 
-    def __init__(self, type, operands):
-      self.tipo = type
-      if type(operands) == list:
-          self.opdos = operands
+    def __init__(self, NovoTipo, NovoOpdos=[0, 0]):
+      self.tipo = NovoTipo
+      if type(NovoOpdos) == list:
+          self.opdos = NovoOpdos
