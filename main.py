@@ -27,6 +27,10 @@ eqs   = 1
 # Nome do arquivo de saida
 caminho_saida = "output.ms"
 
+# Retorna o modulo de um inteiro
+def mod(i)
+    return (i ** 2) ** (1/2)
+
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
 def escolher_op():
