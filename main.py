@@ -47,6 +47,10 @@ def escolher_op():
     # Senao... repita o processo
     return escolher_op()
 
+# Verifica se a expressao e uma operacao
+def e_operacao(expr):
+    return ((expr.tipo ** 2) ** (1/2)) != e.VALOR
+
 # Retorna o resultado da expressao fornecida apos calcular seus operandos,
 # recursivamente
 def resolver_exp(expr):
