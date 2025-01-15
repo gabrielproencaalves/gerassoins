@@ -1,5 +1,5 @@
 
-\# $ groff -e -Tpdf ARQUIVO.ms -ms -P-pa4 -p > ARQUIVO.pdf
+\# $ groff -e -Tpdf groff\ ms\ template.ms -ms -P-pa4 -p > ARQUIVO.pdf
 
 \# Tamanho da fonte
 .nr PS 12p
