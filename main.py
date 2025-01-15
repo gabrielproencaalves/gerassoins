@@ -76,10 +76,6 @@ def saida(expr):
     pass
 
 if __name__ == "__main__":
-    # Alerta o python o uso de variaveis ja existentes
-    global operacoes_disponiveis
-    global operacoes_utilizadas
-
     # Abre o arquivo de saida, truncando-o
     arquivo_saida = open(caminho_saida, "w+")
 
