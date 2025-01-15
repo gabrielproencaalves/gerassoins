@@ -55,7 +55,7 @@ def escolher_op():
 
 # Verifica se a expressao e uma operacao
 def e_operacao(expr):
-    return ((expr.tipo ** 2) ** (1/2)) != e.VALOR
+    return mod(expr.tipo) != e.VALOR
 
 # Retorna o resultado da expressao fornecida apos calcular seus operandos,
 # recursivamente
@@ -107,8 +107,12 @@ def saida(expr):
     return " x "
 
 if __name__ == "__main__":
-    # Abre o arquivo de saida, truncando-o
+
+    # Abre o arquivo de saida de equacoes, truncando-o
     arquivo_saida = open(caminho_saida, "w+")
+
+    # Abre o arquivo de saida de respostas, truncando-o
+    arquivo_respostas = open("respostas_" + caminho_saida, "w+")
 
     # e acrescenta as definicoes necessarias a ele
     arquivo_saida.writelines([
@@ -151,4 +155,11 @@ if __name__ == "__main__":
 
         # Interpretar arvore de exp's, traduzi-la e guarda-la em um arquivo
         # e o x em outro
-        arquivo_saida.write(saida(raiz))
+        arquivo_saida.writelines([
+            "\\n+[step]. $ " + saida(raiz) + " $",
+            ".br"
+        ])
+
+        arquivo_respostas.writelines([
+            ""
+        ])
