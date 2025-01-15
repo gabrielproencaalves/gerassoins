@@ -37,7 +37,7 @@ def escolher_op():
     global operacoes_utilizadas
 
     # Escolha um indice das operacoes
-    indice_ops = randint(0, 6)
+    indice_ops = r.randint(0, 6)
 
     # Se a operacao do indice escolhido estiver disponivel
     if operacoes_disponiveis[indice_ops] - operacoes_utilizadas[indice_ops] > 0:
