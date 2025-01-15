@@ -4,10 +4,12 @@ import random as r
 # Lista do numero de repeticoes permitidas para cada operacao onde
 # operacoes_disponiveis[OPERACAO + 3] indica a quantidade permitida de
 # ocorrencias de OPERACAO nas equacoes
+global operacoes_disponiveis
 operacoes_disponiveis = [0, 1, 1, 0, 1, 1, 0]
 
 # Lista de contagem das operacoes ja utilizadas
-operacoes_utilizadas = [0, 0, 0, 0, 0, 0, 0]
+global operacoes_utilizadas
+operacoes_utilizadas  = [0, 0, 0, 0, 0, 0, 0]
 
 # Limite maximo dos operandos e coeficientes inseridos nas equacoes
 k_max = 10
@@ -39,7 +41,7 @@ def escolher_op():
     global operacoes_utilizadas
 
     # Escolha um indice das operacoes
-    indice_ops = randint(0, 6)
+    indice_ops = r.randint(0, 6)
 
     # Se a operacao do indice escolhido estiver disponivel
     if operacoes_disponiveis[indice_ops] - operacoes_utilizadas[indice_ops] > 0:
@@ -75,13 +77,36 @@ def resolver_exp(expr):
 
 # Retorna a exp fornecida reescrita em groff eqn
 def saida(expr):
-    pass
+    if e_operacao(expr):
+        sinal = ""
+        operandos = [" { %s } ", " { %s } "]
+
+        if   expr.tipo == e.IGUALDADE:   sinal = " = "
+        elif expr.tipo == e.ADICAO:      sinal = " + "
+        elif expr.tipo == e.SUBTRACAO:   sinal = " - "
+        elif expr.tipo == e.MULTIPLICACAO:
+            if  expr.opdos[0].tipo != e.INCOGNITA \
+            and expr.opdos[1].tipo != e.INCOGNITA:
+                operandos = [" { ( %s ) } ", " { ( %s ) } "]
+                if mod(expr.opdos[0].tipo) != e.ADICAO:
+                    operandos[0] = " { %s } "
+
+        elif expr.tipo == e.DIVISAO:     sinal = " over "
+        elif expr.tipo == e.POTENCIACAO: sinal = " sup "
+        elif expr.tipo == e.RADICIACAO:
+            operandos[1] = " \"\" sup " + operandos[1]
+            operandos[0] = " sqrt "     + operandos[0]
+
+        return operandos[0] % saida(expr.opdos[0]) \
+             + sinal                               \
+             + operandos[1] % saida(expr.opdos[1])
+
+    if expr.tipo == e.VALOR:
+        return " " + str(expr.opdos[0]) + " "
+
+    return " x "
 
 if __name__ == "__main__":
-    # Alerta o python o uso de variaveis ja existentes
-    global operacoes_disponiveis
-    global operacoes_utilizadas
-
     # Abre o arquivo de saida, truncando-o
     arquivo_saida = open(caminho_saida, "w+")
 
