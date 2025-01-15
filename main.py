@@ -73,7 +73,34 @@ def resolver_exp(expr):
 
 # Retorna a exp fornecida reescrita em groff eqn
 def saida(expr):
-    pass
+    if e_operacao(expr):
+        sinal = ""
+        operandos = [" { %s } ", " { %s } "]
+
+        if   expr.tipo == e.IGUALDADE:   sinal = " = "
+        elif expr.tipo == e.ADICAO:      sinal = " + "
+        elif expr.tipo == e.SUBTRACAO:   sinal = " - "
+        elif expr.tipo == e.MULTIPLICACAO:
+            if  expr.opdos[0].tipo != e.INCOGNITA \
+            and expr.opdos[1].tipo != e.INCOGNITA:
+                operandos = [" { ( %s ) } ", " { ( %s ) } "]
+                if mod(expr.opdos[0].tipo) != e.ADICAO:
+                    operandos[0] = " { %s } "
+
+        elif expr.tipo == e.DIVISAO:     sinal = " over "
+        elif expr.tipo == e.POTENCIACAO: sinal = " sup "
+        elif expr.tipo == e.RADICIACAO:
+            operandos[1] = " \"\" sup " + operandos[1]
+            operandos[0] = " sqrt "     + operandos[0]
+
+        return operandos[0] % saida(expr.opdos[0]) \
+             + sinal                               \
+             + operandos[1] % saida(expr.opdos[1])
+
+    if expr.tipo == e.VALOR:
+        return " " + str(expr.opdos[0]) + " "
+
+    return " x "
 
 if __name__ == "__main__":
     # Abre o arquivo de saida, truncando-o
