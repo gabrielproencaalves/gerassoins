@@ -24,6 +24,9 @@ x_min = 1
 # Quantidade padrao de equacoes
 eqs   = 1
 
+# Nome do arquivo de saida
+caminho_saida = "output.ms"
+
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
 def escolher_op():
@@ -67,6 +70,19 @@ if __name__ == "__main__":
     global operacoes_disponiveis
     global operacoes_utilizadas
 
+    # Abre o arquivo de saida, truncando-o
+    arquivo_saida = open(caminho_saida, "w+")
+
+    # e acrescenta as definicoes necessarias a ele
+    arquivo_saida.writelines([
+        ".nr PS 12p",
+        ".2C",
+        ".EQ",
+        "delim $$",
+        ".EN",
+        ".nr step 0 1",
+    ])
+
     # Gere equacoes ate a eqs-esima
     for eqnum in range(eqs):
         operacoes_utilizadas = [0, 0, 0, 0, 0, 0, 0]
@@ -95,3 +111,7 @@ if __name__ == "__main__":
         # Calcular alteracoes aplicadas em x e armazenar noutro lado da
         # igualdade
         raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
+
+        # Interpretar arvore de exp's, traduzi-la e guarda-la em um arquivo
+        # e o x em outro
+        arquivo_saida.write(saida(raiz))
