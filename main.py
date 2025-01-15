@@ -69,6 +69,10 @@ def resolver_exp(expr):
             return resolver_exp(expr.opdos[0]) ** (1/resolver_exp(expr.opdos[1]))
     return expr.opdos[0]
 
+# Retorna a exp fornecida reescrita em groff eqn
+def saida(expr):
+    pass
+
 if __name__ == "__main__":
     # Alerta o python o uso de variaveis ja existentes
     global operacoes_disponiveis
