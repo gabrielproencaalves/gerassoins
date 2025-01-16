@@ -29,6 +29,9 @@ eqs   = 40
 # Nome do arquivo de saida
 caminho_saida = "output.ms"
 
+# Precisao de arredondamento
+precisao_decimal = 2
+
 # Retorna o modulo de um inteiro
 def mod(i):
     return (i ** 2) ** (1/2)
@@ -152,6 +155,10 @@ if __name__ == "__main__":
         # Calcular alteracoes aplicadas em x e armazenar noutro lado da
         # igualdade
         raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
+
+        # Arredondar resultado da equacao deixando duas casas decimais
+        # apos a virgula
+        raiz.opdos[1].opdos[0] = round(raiz.opdos[1].opdos[0], precisao_decimal)
 
         # Interpretar arvore de exp's, traduzi-la e guarda-la em um arquivo
         # e o x em outro
