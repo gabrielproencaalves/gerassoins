@@ -30,7 +30,7 @@ eqs   = 1
 caminho_saida = "output.ms"
 
 # Retorna o modulo de um inteiro
-def mod(i)
+def mod(i):
     return (i ** 2) ** (1/2)
 
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
