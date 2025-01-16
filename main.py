@@ -167,10 +167,11 @@ if __name__ == "__main__":
         # Interpretar arvore de exp's, traduzi-la e guarda-la em um arquivo
         # e o x em outro
         arquivo_saida.writelines([
-            "\\n+[step]. $ " + saida(raiz) + " $",
-            ".br"
+            "\\n+[step])  $ " + saida(raiz) + " $\n",
+            ".sp\n"
         ])
 
         arquivo_respostas.writelines([
-            ""
+            "\\n+[step])  $ x = ", str(x), " $\n",
+            ".br\n"
         ])
