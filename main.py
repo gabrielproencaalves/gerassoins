@@ -24,7 +24,7 @@ x_max = 10
 x_min = 1
 
 # Quantidade padrao de equacoes
-eqs   = 1
+eqs   = 40
 
 # Nome do arquivo de saida
 caminho_saida = "output.ms"
