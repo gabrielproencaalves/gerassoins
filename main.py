@@ -105,9 +105,9 @@ def saida(expr):
              + operandos[1] % saida(expr.opdos[1])
 
     if expr.tipo == e.VALOR:
-        return " " + str(expr.opdos[0]) + " "
+        return " { " + str(expr.opdos[0]) + " } "
 
-    return " x "
+    return " { x } "
 
 if __name__ == "__main__":
 
