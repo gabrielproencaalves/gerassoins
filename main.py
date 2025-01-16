@@ -117,15 +117,19 @@ if __name__ == "__main__":
     # Abre o arquivo de saida de respostas, truncando-o
     arquivo_respostas = open("respostas_" + caminho_saida, "w+")
 
-    # e acrescenta as definicoes necessarias a ele
-    arquivo_saida.writelines([
-        ".nr PS 12p",
-        ".2C",
-        ".EQ",
-        "delim $$",
-        ".EN",
-        ".nr step 0 1",
-    ])
+    # Definicoes recomendadas para os arquivos groff
+    groff_configs = [
+        ".nr PS 10p\n",
+        ".2C\n",
+        ".EQ\n",
+        "delim $$\n",
+        ".EN\n",
+        ".nr step 0 1\n"
+    ]
+
+    # e acrescenta as definicoes necessarias a eles
+    arquivo_saida.writelines(groff_configs)
+    arquivo_respostas.writelines(groff_configs)
 
     # Gere equacoes ate a eqs-esima
     for eqnum in range(eqs):
