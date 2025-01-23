@@ -24,10 +24,17 @@ x_max = 10
 x_min = 1
 
 # Quantidade padrao de equacoes
-eqs   = 1
+eqs   = 40
 
 # Nome do arquivo de saida
 caminho_saida = "output.ms"
+
+# Precisao de arredondamento
+precisao_decimal = 2
+
+# Retorna o modulo de um inteiro
+def mod(i):
+    return (i ** 2) ** (1/2)
 
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
@@ -51,7 +58,7 @@ def escolher_op():
 
 # Verifica se a expressao e uma operacao
 def e_operacao(expr):
-    return ((expr.tipo ** 2) ** (1/2)) != e.VALOR
+    return mod(expr.tipo) != e.VALOR
 
 # Verifica se a expressao e uma adicao
 def e_adicao(expr):
@@ -139,23 +146,31 @@ def saida(expr):
              + operandos[1] % saida(expr.opdos[1])
 
     if expr.tipo == e.VALOR:
-        return " " + str(expr.opdos[0]) + " "
+        return " { " + str(expr.opdos[0]) + " } "
 
-    return " x "
+    return " { x } "
 
 if __name__ == "__main__":
-    # Abre o arquivo de saida, truncando-o
+
+    # Abre o arquivo de saida de equacoes, truncando-o
     arquivo_saida = open(caminho_saida, "w+")
 
-    # e acrescenta as definicoes necessarias a ele
-    arquivo_saida.writelines([
-        ".nr PS 12p",
-        ".2C",
-        ".EQ",
-        "delim $$",
-        ".EN",
-        ".nr step 0 1",
-    ])
+    # Abre o arquivo de saida de respostas, truncando-o
+    arquivo_respostas = open("respostas_" + caminho_saida, "w+")
+
+    # Definicoes recomendadas para os arquivos groff
+    groff_configs = [
+        ".nr PS 10p\n",
+        ".2C\n",
+        ".EQ\n",
+        "delim $$\n",
+        ".EN\n",
+        ".nr step 0 1\n"
+    ]
+
+    # e acrescenta as definicoes necessarias a eles
+    arquivo_saida.writelines(groff_configs)
+    arquivo_respostas.writelines(groff_configs)
 
     # Gere equacoes ate a eqs-esima
     for eqnum in range(eqs):
@@ -186,6 +201,18 @@ if __name__ == "__main__":
         # igualdade
         raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
 
+        # Arredondar resultado da equacao deixando duas casas decimais
+        # apos a virgula
+        raiz.opdos[1].opdos[0] = round(raiz.opdos[1].opdos[0], precisao_decimal)
+
         # Interpretar arvore de exp's, traduzi-la e guarda-la em um arquivo
         # e o x em outro
-        arquivo_saida.write(saida(raiz))
+        arquivo_saida.writelines([
+            "\\n+[step])  $ " + saida(raiz) + " $\n",
+            ".sp\n"
+        ])
+
+        arquivo_respostas.writelines([
+            "\\n+[step])  $ x = ", str(x), " $\n",
+            ".br\n"
+        ])
