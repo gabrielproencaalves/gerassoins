@@ -82,22 +82,35 @@ def e_radiciacao(expr):
     return expr.tipo == e.RADICIACAO
 
 # Retorna o resultado da expressao fornecida apos calcular seus operandos,
-# recursivamente
+# recursivamente, no formato de uma outra exp
 def resolver_exp(expr):
+    resultado = e.exp(e.VALOR)
+
     if e_operacao(expr):
+        tmp_opdos = [
+          resolver_exp(expr.opdos[0]),
+          resolver_exp(expr.opdos[1])
+        ]
+
+        if e_fracao(tmp_opdos[0]) or e_fracao(tmp_opdos[1])
+            
         if e_adicao(expr):
-            return resolver_exp(expr.opdos[0]) + resolver_exp(expr.opdos[1])
+            resultado.opdos[0] = tmp_opdos[0].opdos[0] + tmp_opdos[1].opdos[0]
         if e_subtracao(expr):
-            return resolver_exp(expr.opdos[0]) - resolver_exp(expr.opdos[1])
+            resultado.opdos[0] = tmp_opdos[0].opdos[0] - tmp_opdos[1].opdos[0]
         if e_multiplicacao(expr):
-            return resolver_exp(expr.opdos[0]) * resolver_exp(expr.opdos[1])
+            resultado.opdos[0] = tmp_opdos[0].opdos[0] * tmp_opdos[1].opdos[0]
         if e_divisao(expr):
-            return resolver_exp(expr.opdos[0]) / resolver_exp(expr.opdos[1])
+            resultado.tipo = e.DIVISAO
+            resultado.opdos = tmp_opdos
         if e_potenciacao(expr):
-            return resolver_exp(expr.opdos[0]) ** resolver_exp(expr.opdos[1])
+            return tmp_opdos[0].opdos[0] ** tmp_opdos[1].opdos[0]
         if e_radiciacao(expr):
-            return resolver_exp(expr.opdos[0]) ** (1/resolver_exp(expr.opdos[1]))
-    return expr.opdos[0]
+            return tmp_opdos[0].opdos[0] ** (1/tmp_opdos[1].opdos[0])
+        return resultado
+
+    resultado.opdos = expr.opdos
+    return resultado
 
 # Retorna a exp fornecida reescrita em groff eqn
 def saida(expr):
