@@ -85,17 +85,17 @@ def e_radiciacao(expr):
 # recursivamente
 def resolver_exp(expr):
     if e_operacao(expr):
-        if expr.tipo == e.ADICAO:
+        if e_adicao(expr):
             return resolver_exp(expr.opdos[0]) + resolver_exp(expr.opdos[1])
-        if expr.tipo == e.SUBTRACAO:
+        if e_subtracao(expr):
             return resolver_exp(expr.opdos[0]) - resolver_exp(expr.opdos[1])
-        if expr.tipo == e.MULTIPLICACAO:
+        if e_multiplicacao(expr):
             return resolver_exp(expr.opdos[0]) * resolver_exp(expr.opdos[1])
-        if expr.tipo == e.DIVISAO:
+        if e_divisao(expr):
             return resolver_exp(expr.opdos[0]) / resolver_exp(expr.opdos[1])
-        if expr.tipo == e.POTENCIACAO:
+        if e_potenciacao(expr):
             return resolver_exp(expr.opdos[0]) ** resolver_exp(expr.opdos[1])
-        if expr.tipo == e.RADICIACAO:
+        if e_radiciacao(expr):
             return resolver_exp(expr.opdos[0]) ** (1/resolver_exp(expr.opdos[1]))
     return expr.opdos[0]
 
