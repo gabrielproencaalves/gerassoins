@@ -141,6 +141,11 @@ def saida(expr):
                 operandos = [" { ( %s ) } ", " { ( %s ) } "]
                 if mod(expr.opdos[0].tipo) != e.ADICAO:
                     operandos[0] = " { %s } "
+            elif expr.opdos[0].tipo == e.INCOGNITA \
+             and not e_operacao(expr.opdos[1]):
+                return operandos[0] % saida(expr.opdos[1]) \
+                     + sinal                               \
+                     + operandos[1] % saida(expr.opdos[0])
 
         elif expr.tipo == e.DIVISAO:     sinal = " over "
         elif expr.tipo == e.POTENCIACAO: sinal = " sup "
