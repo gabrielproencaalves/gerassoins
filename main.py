@@ -36,6 +36,40 @@ precisao_decimal = 2
 def mod(i):
     return (i ** 2) ** (1/2)
 
+# Retorna numeros primos de 0 a x
+# Obrigado, Eratóstenes
+def primos(x):
+    # x deve ser positivo!
+    x = mod(x)
+
+    # Se o usuario fornecer um limite valido
+    if x > 1:
+        # Declara lista de primos, com o primeiro deles
+        vals = [2]
+        # Próximo número a partir do primeiro primo
+        i = 3
+
+        # Até i chegar a x
+        while i <= x:
+            j = 0
+            while j < vals.len:
+                # Se i for divisível por um valor primo anterior
+                if i % vals[j] == 0:
+                    # Interrompa o processo
+                    break
+                j += 1
+
+            # Se j percorreu toda a lista, sem interrupcoes
+            if j == vals.len:
+                # i é primo, guarde-o em vals
+                vals += [i]
+
+            # Avance para o proximo inteiro
+            i += 1
+
+        # Retorne os primos encontrados
+        return vals
+
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
 def escolher_op():
