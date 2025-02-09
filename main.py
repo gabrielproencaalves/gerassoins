@@ -70,6 +70,39 @@ def primos(x):
         # Retorne os primos encontrados
         return vals
 
+# Retorna um produto de fatores primos equivalente a x
+def fatorar(x):
+    # Declara lista onde ficarao os fatores
+    fatores = []
+
+    # Se o numero for negativo
+    if x < 0:
+        # Sinalize com o fator -1
+        fatores += [-1]
+        # Torne o x positivo
+        x = -x
+
+    # Se x for um produto de fatores primos
+    if x > 3:
+        # Armazene os primos necessarios para fatora-lo
+        fprimos = primos(x ** (1/2))
+        i = 0
+        # Enquanto o x for redutivel
+        while x > 1
+            # Se x nao for um produto de fprimos[i]
+            if x % fprimos[i] != 0:
+                # Tente o proximo fator
+                i += 1
+
+            else # se for
+                # Retire este fator de x
+                x /= fprimos[i]
+                # e coloque na lista de fatores
+                fatores += [fprimos[i]]
+        # Retorne os fatores encontrados
+        return fatores
+    return [x] + fatores
+
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
 def escolher_op():
