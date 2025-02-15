@@ -36,6 +36,77 @@ precisao_decimal = 2
 def mod(i):
     return (i ** 2) ** (1/2)
 
+# Retorna numeros primos de 0 a x
+# Obrigado, Eratóstenes
+def primos(x):
+    # x deve ser positivo!
+    x = mod(x)
+
+    # Se o usuario fornecer um limite valido
+    if x > 1:
+        # Declara lista de primos, com o primeiro deles
+        vals = [2]
+        # Próximo número a partir do primeiro primo
+        i = 3
+
+        # Até i chegar a x
+        while i <= x:
+            j = 0
+            while j < vals.len:
+                # Se i for divisível por um valor primo anterior
+                if i % vals[j] == 0:
+                    # Interrompa o processo
+                    break
+                j += 1
+
+            # Se j percorreu toda a lista, sem interrupcoes
+            if j == vals.len:
+                # i é primo, guarde-o em vals
+                vals += [i]
+
+            # Avance para o proximo inteiro
+            i += 1
+
+        # Retorne os primos encontrados
+        return vals
+
+# Retorna um produto de fatores primos equivalente a x
+def fatorar(x):
+    # Declara lista onde ficarao os fatores
+    fatores = []
+
+    # Se o numero for negativo
+    if x < 0:
+        # Sinalize com o fator -1
+        fatores += [-1]
+        # Torne o x positivo
+        x = -x
+
+    # Se x for um produto de fatores primos
+    if x > 3:
+        # Armazene os primos necessarios para fatora-lo
+        fprimos = primos(x ** (1/2))
+        i = 0
+        # Enquanto o x for redutivel
+        while x > 1
+            # Se x nao for um produto de fprimos[i]
+            if x % fprimos[i] != 0:
+                # Tente o proximo fator
+                i += 1
+
+            else # se for
+                # Retire este fator de x
+                x /= fprimos[i]
+                # e coloque na lista de fatores
+                fatores += [fprimos[i]]
+        # Retorne os fatores encontrados
+        return fatores
+    return [x] + fatores
+
+# Retorna o resultado absoluto de uma fracao
+def razao(expr):
+    if e_fracao(expr):
+
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
 def escolher_op():
@@ -119,6 +190,26 @@ def resolver_exp(expr):
     resultado.opdos = expr.opdos
     return resultado
 
+# Mostra a exp e suas descendentes no formato de notacao do python
+def mostrar_exp(expr):
+    if e_operacao(expr):
+        sinal = None
+        expr_final = " ( %s ) %s ( %s ) "
+        if expr.tipo == e.IGUALDADE:     sinal = "=="
+        elif expr.tipo == e.ADICAO:        sinal = "+"
+        elif expr.tipo == e.SUBTRACAO:     sinal = "-"
+        elif expr.tipo == e.MULTIPLICACAO: sinal = "*"
+        elif expr.tipo == e.DIVISAO:       sinal = "/"
+        elif expr.tipo == e.POTENCIACAO:   sinal = "^^"
+        elif expr.tipo == e.RADICIACAO:    sinal = "vv"
+
+        return expr_final % \
+               (mostrar_exp(expr.opdos[0]),
+                sinal,
+                mostrar_exp(expr.opdos[1]))
+    return str(expr.opdos[0])
+
+
 # Retorna a exp fornecida reescrita em groff eqn
 def saida(expr):
     if e_operacao(expr):
@@ -134,6 +225,11 @@ def saida(expr):
                 operandos = [" { ( %s ) } ", " { ( %s ) } "]
                 if mod(expr.opdos[0].tipo) != e.ADICAO:
                     operandos[0] = " { %s } "
+            elif expr.opdos[0].tipo == e.INCOGNITA \
+             and not e_operacao(expr.opdos[1]):
+                return operandos[0] % saida(expr.opdos[1]) \
+                     + sinal                               \
+                     + operandos[1] % saida(expr.opdos[0])
 
         elif expr.tipo == e.DIVISAO:     sinal = " over "
         elif expr.tipo == e.POTENCIACAO: sinal = " sup "
