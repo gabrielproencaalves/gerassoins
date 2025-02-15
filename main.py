@@ -103,9 +103,11 @@ def fatorar(x):
         return fatores
     return [x] + fatores
 
-# Retorna o resultado absoluto de uma fracao
+# Torna uma fracao em seu resultado absoluto
 def razao(expr):
     if e_fracao(expr):
+      expr.tipo = e.VALOR
+      expr.opdos = [expr.opdos[0] / expr.opdos[1], 0]
 
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
