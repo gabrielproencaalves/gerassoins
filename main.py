@@ -109,6 +109,42 @@ def razao(expr):
       expr.tipo = e.VALOR
       expr.opdos = [expr.opdos[0] / expr.opdos[1], 0]
 
+# Torna uma fracao expr em uma equivalente, porem, com menos fatores no
+# denominador e no numerador
+def simplificar(expr):
+    if e_fracao(expr):
+        # Define variaveis para referencia e para iteracao
+        menor_produto = None
+        maior_produto = None
+        i = 0
+        j = 0
+
+        if expr.opdos[0].opdos.len < expr.opdos[1].opdos.len:
+            menor_produto = expr.opdos[0].opdos
+            maior_produto = expr.opdos[1].opdos
+        else
+            menor_produto = expr.opdos[1].opdos
+            maior_produto = expr.opdos[0].opdos
+
+        while i < menor_produto.len:
+            if menor_produto[i] == maior_produto[j]:
+                del(menor_produto[i], maior_produto[j])
+
+            else
+                if menor_produto[i] < maior_produto[j]:
+                    i += 1
+                else
+                    j += 1
+
+        # Se todos os fatores do produto do numerador foram removidos
+        if expr.opdos[0].opdos.len == 0:
+            # Simplifique tudo para um inteiro 1
+            expr.opdos[0] = exp(e.VALOR, [1, 0])
+        # Se todos os fatores do produto do denominador foram removidos
+        if expr.opdos[1].opdos.len == 0:
+            # Simplifique tudo para um inteiro 1
+            expr.opdos[1] = exp(e.VALOR, [1, 0])
+
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
 def escolher_op():
