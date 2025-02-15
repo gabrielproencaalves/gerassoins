@@ -37,7 +37,7 @@ def mod(i):
     return (i ** 2) ** (1/2)
 
 # Retorna numeros primos de 0 a x
-# Obrigado, Eratóstenes
+# Obrigado, Eratostenes
 def primos(x):
     # x deve ser positivo!
     x = mod(x)
@@ -61,7 +61,7 @@ def primos(x):
 
             # Se j percorreu toda a lista, sem interrupcoes
             if j == vals.len:
-                # i é primo, guarde-o em vals
+                # i e primo, guarde-o em vals
                 vals += [i]
 
             # Avance para o proximo inteiro
