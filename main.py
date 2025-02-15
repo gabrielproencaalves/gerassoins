@@ -103,10 +103,12 @@ def fatorar(x):
         return fatores
     return [x] + fatores
 
-# Torna uma fracao em seu resultado absoluto
+# Torna uma fracao expr em seu resultado absoluto
 def razao(expr):
     if e_fracao(expr):
+      # Altera o tipo da exp para VALOR
       expr.tipo = e.VALOR
+      # E atribui o resultado real da antiga frac a aquela
       expr.opdos = [expr.opdos[0] / expr.opdos[1], 0]
 
 # Torna uma fracao expr em uma equivalente, porem, com menos fatores no
