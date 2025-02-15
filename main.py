@@ -103,6 +103,10 @@ def fatorar(x):
         return fatores
     return [x] + fatores
 
+# Retorna o resultado absoluto de uma fracao
+def razao(expr):
+    if e_fracao(expr):
+
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
 def escolher_op():
