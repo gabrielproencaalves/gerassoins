@@ -136,7 +136,7 @@ def simplificar(expr):
         if expr.opdos[0].opdos.len < expr.opdos[1].opdos.len:
             menor_produto = expr.opdos[0].opdos
             maior_produto = expr.opdos[1].opdos
-        else
+        else:
             menor_produto = expr.opdos[1].opdos
             maior_produto = expr.opdos[0].opdos
 
@@ -144,10 +144,10 @@ def simplificar(expr):
             if menor_produto[i] == maior_produto[j]:
                 del(menor_produto[i], maior_produto[j])
 
-            else
+            else:
                 if menor_produto[i] < maior_produto[j]:
                     i += 1
-                else
+                else:
                     j += 1
 
         # Se todos os fatores do produto do numerador foram removidos
