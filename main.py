@@ -127,6 +127,10 @@ def razao(expr):
 # denominador e no numerador
 def simplificar(expr):
     if e_fracao(expr):
+
+        # [ ] Verifique aqui se o denominador e o numerador sao produtos de
+        # fatores primos
+
         # Define variaveis para referencia e para iteracao
         menor_produto = None
         maior_produto = None
