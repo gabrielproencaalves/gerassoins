@@ -115,7 +115,11 @@ def razao(expr):
       # Altera o tipo da exp para VALOR
       expr.tipo = e.VALOR
       # E atribui o resultado real da antiga frac a aquela
-      expr.opdos = [resolver_exp(expr.opdos[0]) / resolver_exp(expr.opdos[1]), 0]
+      expr.opdos = [
+                     resolver_exp(expr.opdos[0]).opdos[0]
+                     / resolver_exp(expr.opdos[1]).opdos[0],
+                     0
+                   ]
 
 # Torna uma fracao expr em uma equivalente, porem, com menos fatores no
 # denominador e no numerador
