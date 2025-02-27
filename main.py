@@ -120,6 +120,8 @@ def razao(expr):
                      / resolver_exp(expr.opdos[1]).opdos[0],
                      0
                    ]
+    # Retorna expressao
+    return expr
 
 # Torna uma fracao expr em uma equivalente, porem, com menos fatores no
 # denominador e no numerador
