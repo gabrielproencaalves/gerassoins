@@ -162,6 +162,8 @@ def simplificar(expr):
                     i += 1
                 else:
                     j += 1
+                    if j < maior_produto_len:
+                        break
 
         # Se todos os fatores do produto do numerador foram removidos
         if expr.opdos[0].opdos.len == 0:
