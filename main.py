@@ -52,7 +52,7 @@ def primos(x):
         # Até i chegar a x
         while i <= x:
             j = 0
-            while j < vals.len:
+            while j < len(vals):
                 # Se i for divisível por um valor primo anterior
                 if i % vals[j] == 0:
                     # Interrompa o processo
@@ -60,8 +60,9 @@ def primos(x):
                 j += 1
 
             # Se j percorreu toda a lista, sem interrupcoes
-            if j == vals.len:
-                # i e primo, guarde-o em vals
+
+            if j == len(vals):
+                # i é primo, guarde-o em vals
                 vals += [i]
 
             # Avance para o proximo inteiro
@@ -86,22 +87,27 @@ def fatorar(x):
     if x > 3:
         # Armazene os primos necessarios para fatora-lo
         fprimos = primos(x ** (1/2))
+        fprimos_len = len(fprimos)
         i = 0
-        # Enquanto o x for redutivel
-        while x > 1
+
+        # Enquanto o x for redutivel e houverem primos disponiveis
+        while x > 1 and i < fprimos_len:
             # Se x nao for um produto de fprimos[i]
             if x % fprimos[i] != 0:
                 # Tente o proximo fator
                 i += 1
 
-            else # se for
+            else: # se for
                 # Retire este fator de x
                 x /= fprimos[i]
                 # e coloque na lista de fatores
                 fatores += [fprimos[i]]
+
         # Retorne os fatores encontrados
+        if x > 1:
+            return fatores + [int(x)]
         return fatores
-    return [x] + fatores
+    return fatores + [x]
 
 # Torna uma fracao expr em seu resultado absoluto
 def razao(expr):
