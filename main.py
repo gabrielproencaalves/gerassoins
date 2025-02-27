@@ -132,8 +132,10 @@ def simplificar(expr):
         # fatores primos
 
         # Define variaveis para referencia e para iteracao
-        menor_produto = None
-        maior_produto = None
+        menor_produto     = None
+        menor_produto_len = None
+        maior_produto     = None
+        maior_produto_len = None
         i = 0
         j = 0
 
