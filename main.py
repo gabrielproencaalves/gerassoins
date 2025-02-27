@@ -158,6 +158,7 @@ def simplificar(expr):
         if expr.opdos[1].opdos.len == 0:
             # Simplifique tudo para um inteiro 1
             expr.opdos[1] = exp(e.VALOR, [1, 0])
+    return expr
 
 # Escolhe randomicamente uma das operacoes disponiveis e atualiza a lista de
 # contagem de operacoes utilizadas
