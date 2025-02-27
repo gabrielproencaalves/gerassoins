@@ -112,14 +112,14 @@ def fatorar(x):
 # Torna uma fracao expr em seu resultado absoluto
 def razao(expr):
     if e_fracao(expr):
-      # Altera o tipo da exp para VALOR
-      expr.tipo = e.VALOR
-      # E atribui o resultado real da antiga frac a aquela
-      expr.opdos = [
-                     resolver_exp(expr.opdos[0]).opdos[0]
-                     / resolver_exp(expr.opdos[1]).opdos[0],
-                     0
-                   ]
+        # Altera o tipo da exp para VALOR
+        expr.tipo = e.VALOR
+        # E atribui o resultado real da antiga frac a aquela
+        expr.opdos = [
+                       resolver_exp(expr.opdos[0]).opdos[0]
+                       / resolver_exp(expr.opdos[1]).opdos[0],
+                       0
+                     ]
     # Retorna expressao
     return expr
 
