@@ -158,7 +158,7 @@ def simplificar(expr):
         menor_produto_len = len(menor_produto)
         maior_produto_len = len(maior_produto)
 
-        # Percorre os produtos, eliminando fatores comuns
+        # Percorre os fatores dos produtos, eliminando os comuns
         while i < menor_produto_len:
             if menor_produto[i] == maior_produto[j]:
                 del(menor_produto[i], maior_produto[j])
