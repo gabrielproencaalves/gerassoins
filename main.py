@@ -71,6 +71,15 @@ def primos(x):
         # Retorne os primos encontrados
         return vals
 
+# Torna expr em uma exp equivalente, porem, em formato racional
+def fracao(expr):
+    if not e_fracao(expr):
+        expr.opdos[0] = e.exp(expr.tipo, expr.opdos[:])
+        expr.opdos[1] = e.exp(e.VALOR, [1, 0])
+        expr.tipo = e.DIVISAO
+
+    return expr
+
 # Retorna um produto de fatores primos equivalente a x
 def fatorar(x):
     # Declara lista onde ficarao os fatores
