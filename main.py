@@ -132,10 +132,10 @@ def razao(expr):
 # Torna uma fracao expr em uma equivalente, porem, com menos fatores no
 # denominador e no numerador
 def simplificar(expr):
-    if e_fracao(expr):
-
-        # [ ] Verifique aqui se o denominador e o numerador sao produtos de
-        # fatores primos
+    # Se a exp for uma fracao de produtos de fatores primos
+    if  e_fracao(expr)                     \
+        and e_multiplicacao(expr.opdos[0]) \
+        and e_multiplicacao(expr.opdos[1]):
 
         # Define variaveis para referencia e para iteracao
         menor_produto     = None
