@@ -160,25 +160,33 @@ def simplificar(expr):
 
         # Percorre os fatores dos produtos, eliminando os comuns
         while i < menor_produto_len:
-            if menor_produto[i] == maior_produto[j]:
+            # Se encontrar um fator comum
+            if menor_produto[i].opdos[0] == maior_produto[j].opdos[0]:
+                # Remova-o do denominador e do numerador
                 del(menor_produto[i], maior_produto[j])
-
+                # E atualize o tamanho das listas
+                menor_produto_len -= 1
+                maior_produto_len -= 1
+            # Senao
             else:
-                if menor_produto[i] < maior_produto[j]:
+            # Mire para o proximo fator,
+            # seja do numerador, seja do denominador
+                if menor_produto[i].opdos[0] < maior_produto[j].opdos[0]:
                     i += 1
                 else:
                     j += 1
-                    if j < maior_produto_len:
+                    if j >= maior_produto_len:
                         break
 
         # Se todos os fatores do produto do numerador foram removidos
-        if expr.opdos[0].opdos.len == 0:
+        if len(expr.opdos[0].opdos) == 1:
             # Simplifique tudo para um inteiro 1
             expr.opdos[0] = exp(e.VALOR, [1, 0])
+
         # Se todos os fatores do produto do denominador foram removidos
-        if expr.opdos[1].opdos.len == 0:
+        if len(expr.opdos[1].opdos) == 1:
             # Simplifique tudo para um inteiro 1
-            expr.opdos[1] = exp(e.VALOR, [1, 0])
+            expr.opdos[1] = e.exp(e.VALOR, [1, 0])
     # Retorna expressao
     return expr
 
