@@ -74,12 +74,16 @@ def primos(x):
 # Retorna um produto de fatores primos equivalente a x
 def fatorar(x):
     # Declara lista onde ficarao os fatores
-    fatores = []
+    fatores = [
+        e.exp(e.VALOR, [1, 0])
+    ]
 
     # Se o numero for negativo
     if x < 0:
         # Sinalize com o fator -1
-        fatores += [-1]
+        fatores += [
+            e.exp(e.VALOR, [-1, 0])
+        ]
         # Torne o x positivo
         x = -x
 
@@ -101,13 +105,15 @@ def fatorar(x):
                 # Retire este fator de x
                 x /= fprimos[i]
                 # e coloque na lista de fatores
-                fatores += [fprimos[i]]
+                fatores += [
+                    e.exp(e.VALOR, [fprimos[i], 0])
+                ]
 
         # Retorne os fatores encontrados
         if x > 1:
-            return fatores + [int(x)]
-        return fatores
-    return fatores + [x]
+            return e.exp(e.MULTIPLICACAO, fatores + [int(x)])
+        return e.exp(e.MULTIPLICACAO, fatores)
+    return e.exp(e.MULTIPLICACAO, fatores + [x])
 
 # Torna uma fracao expr em seu resultado absoluto
 def razao(expr):
