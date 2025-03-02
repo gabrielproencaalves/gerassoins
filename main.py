@@ -142,8 +142,8 @@ def simplificar(expr):
         menor_produto_len = None
         maior_produto     = None
         maior_produto_len = None
-        i = 0
-        j = 0
+        i = 1
+        j = 1
 
         # Define qual produto possui mais fatores e qual possui menos
         if len(expr.opdos[0].opdos) < len(expr.opdos[1].opdos):
