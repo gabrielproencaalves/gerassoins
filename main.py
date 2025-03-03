@@ -126,6 +126,9 @@ def fatorar(x):
 
 # Torna uma fracao expr em seu resultado absoluto
 def razao(expr):
+    # [ ] Verificar se operandos de expr sao tambem
+    # valores absolutos
+
     if e_fracao(expr):
         # Altera o tipo da exp para VALOR
         expr.tipo = e.VALOR
@@ -253,6 +256,8 @@ def e_radiciacao(expr):
 
 # Retorna o resultado da expressao fornecida apos calcular seus operandos,
 # recursivamente, no formato de uma outra exp
+
+# [ ] Corrigir: retornar NOVA exp sem alterar as originais
 def resolver_exp(expr):
     if e_operacao(expr):
         resultado = e.exp(e.VALOR)
