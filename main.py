@@ -343,6 +343,22 @@ def resolver_exp(expr):
                   ])
                 ]
 
+            elif e_radiciacao(expr):
+                resultado.opdos = [
+                  e.exp(e.VALOR, [
+                    tmp_opdos[0].opdos[0].opdos[0]
+                    ** (1 / tmp_opdos[1].opdos[0].opdos[0]
+                        / tmp_opdos[1].opdos[1].opdos[0]),
+                    0
+                  ]),
+                  e.exp(e.VALOR, [
+                    tmp_opdos[0].opdos[1].opdos[0]
+                    ** (1 / tmp_opdos[1].opdos[0].opdos[0]
+                        / tmp_opdos[1].opdos[1].opdos[0]),
+                    0
+                  ])
+                ]
+
             resultado.opdos[0] = tmp_opdos[0].opdos[0] + tmp_opdos[1].opdos[0]
         if e_subtracao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] - tmp_opdos[1].opdos[0]
