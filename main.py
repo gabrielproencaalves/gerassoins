@@ -360,18 +360,21 @@ def resolver_exp(expr):
                 ]
 
             return resultado
+        if   e_adicao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] + tmp_opdos[1].opdos[0]
-        if e_subtracao(expr):
+        elif e_subtracao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] - tmp_opdos[1].opdos[0]
-        if e_multiplicacao(expr):
+        elif e_multiplicacao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] * tmp_opdos[1].opdos[0]
-        if e_divisao(expr):
+        elif e_divisao(expr):
             resultado.tipo = e.DIVISAO
             resultado.opdos = tmp_opdos
-        if e_potenciacao(expr):
-            return tmp_opdos[0].opdos[0] ** tmp_opdos[1].opdos[0]
-        if e_radiciacao(expr):
-            return tmp_opdos[0].opdos[0] ** (1/tmp_opdos[1].opdos[0])
+        elif e_potenciacao(expr):
+            resultado.opdos[0] = tmp_opdos[0].opdos[0]
+                                 ** tmp_opdos[1].opdos[0]
+        elif e_radiciacao(expr):
+            resultado.opdos[0] = tmp_opdos[0].opdos[0]
+                                 ** (1/tmp_opdos[1].opdos[0])
         return resultado
 
     resultado.opdos = expr.opdos
