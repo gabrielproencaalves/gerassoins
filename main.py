@@ -263,8 +263,8 @@ def resolver_exp(expr):
         ]
 
         if e_fracao(tmp_opdos[0]) or e_fracao(tmp_opdos[1])
-            
-        if e_adicao(expr):
+            resultado.tipo = e.DIVISAO
+
             resultado.opdos[0] = tmp_opdos[0].opdos[0] + tmp_opdos[1].opdos[0]
         if e_subtracao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] - tmp_opdos[1].opdos[0]
