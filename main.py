@@ -254,9 +254,9 @@ def e_radiciacao(expr):
 # Retorna o resultado da expressao fornecida apos calcular seus operandos,
 # recursivamente, no formato de uma outra exp
 def resolver_exp(expr):
-    resultado = e.exp(e.VALOR)
-
     if e_operacao(expr):
+        resultado = e.exp(e.VALOR)
+
         tmp_opdos = [
           resolver_exp(expr.opdos[0]),
           resolver_exp(expr.opdos[1])
