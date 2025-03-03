@@ -275,14 +275,14 @@ def resolver_exp(expr):
             if   e_adicao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]
-                    * tmp_opdos[1].opdos[1].opdos[0]
-                    + tmp_opdos[1].opdos[0].opdos[0]
+                    tmp_opdos[0].opdos[0].opdos[0]    \
+                    * tmp_opdos[1].opdos[1].opdos[0]  \
+                    + tmp_opdos[1].opdos[0].opdos[0]  \
                     * tmp_opdos[0].opdos[1].opdos[0],
                     0
                   ]),
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[1].opdos[0]
+                    tmp_opdos[0].opdos[1].opdos[0] \
                     * tmp_opdos[1].opdos[1].opdos[0],
                     0
                   ])
@@ -291,14 +291,14 @@ def resolver_exp(expr):
             elif e_subtracao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]
-                    * tmp_opdos[1].opdos[1].opdos[0]
-                    - tmp_opdos[1].opdos[0].opdos[0]
+                    tmp_opdos[0].opdos[0].opdos[0]    \
+                    * tmp_opdos[1].opdos[1].opdos[0]  \
+                    - tmp_opdos[1].opdos[0].opdos[0]  \
                     * tmp_opdos[0].opdos[1].opdos[0],
                     0
                   ]),
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[1].opdos[0]
+                    tmp_opdos[0].opdos[1].opdos[0] \
                     * tmp_opdos[1].opdos[1].opdos[0],
                     0
                   ])
@@ -307,7 +307,7 @@ def resolver_exp(expr):
             elif e_multiplicacao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]
+                    tmp_opdos[0].opdos[0].opdos[0] \
                     * tmp_opdos[1].opdos[0].opdos[0],
                     0
                   ]),
@@ -321,12 +321,12 @@ def resolver_exp(expr):
             elif e_divisao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]
+                    tmp_opdos[0].opdos[0].opdos[0] \
                     * tmp_opdos[1].opdos[1].opdos[0],
                     0
                   ]),
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[1].opdos[0]
+                    tmp_opdos[0].opdos[1].opdos[0] \
                     * tmp_opdos[1].opdos[0].opdos[0],
                     0
                   ])
@@ -335,14 +335,14 @@ def resolver_exp(expr):
             elif e_potenciacao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]
-                    ** (tmp_opdos[1].opdos[0].opdos[0]
+                    tmp_opdos[0].opdos[0].opdos[0]     \
+                    ** (tmp_opdos[1].opdos[0].opdos[0] \
                         / tmp_opdos[1].opdos[1].opdos[0]),
                     0
                   ]),
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[1].opdos[0]
-                    ** (tmp_opdos[1].opdos[0].opdos[0]
+                    tmp_opdos[0].opdos[1].opdos[0]     \
+                    ** (tmp_opdos[1].opdos[0].opdos[0] \
                         / tmp_opdos[1].opdos[1].opdos[0]),
                     0
                   ])
@@ -351,14 +351,14 @@ def resolver_exp(expr):
             elif e_radiciacao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]
-                    ** (1 / tmp_opdos[1].opdos[0].opdos[0]
+                    tmp_opdos[0].opdos[0].opdos[0]         \
+                    ** (1 / tmp_opdos[1].opdos[0].opdos[0] \
                         / tmp_opdos[1].opdos[1].opdos[0]),
                     0
                   ]),
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[1].opdos[0]
-                    ** (1 / tmp_opdos[1].opdos[0].opdos[0]
+                    tmp_opdos[0].opdos[1].opdos[0]         \
+                    ** (1 / tmp_opdos[1].opdos[0].opdos[0] \
                         / tmp_opdos[1].opdos[1].opdos[0]),
                     0
                   ])
@@ -375,10 +375,10 @@ def resolver_exp(expr):
             resultado.tipo = e.DIVISAO
             resultado.opdos = tmp_opdos
         elif e_potenciacao(expr):
-            resultado.opdos[0] = tmp_opdos[0].opdos[0]
+            resultado.opdos[0] = tmp_opdos[0].opdos[0] \
                                  ** tmp_opdos[1].opdos[0]
         elif e_radiciacao(expr):
-            resultado.opdos[0] = tmp_opdos[0].opdos[0]
+            resultado.opdos[0] = tmp_opdos[0].opdos[0] \
                                  ** (1/tmp_opdos[1].opdos[0])
         return resultado
     return e.exp(e.VALOR, expr.opdos)
