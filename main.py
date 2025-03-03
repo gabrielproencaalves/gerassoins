@@ -376,9 +376,7 @@ def resolver_exp(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0]
                                  ** (1/tmp_opdos[1].opdos[0])
         return resultado
-
-    resultado.opdos = expr.opdos
-    return resultado
+    return e.exp(e.VALOR, expr.opdos)
 
 # Mostra a exp e suas descendentes no formato de notacao do python
 def mostrar_exp(expr):
