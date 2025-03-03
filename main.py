@@ -359,6 +359,7 @@ def resolver_exp(expr):
                   ])
                 ]
 
+            return resultado
             resultado.opdos[0] = tmp_opdos[0].opdos[0] + tmp_opdos[1].opdos[0]
         if e_subtracao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] - tmp_opdos[1].opdos[0]
