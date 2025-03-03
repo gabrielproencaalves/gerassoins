@@ -267,6 +267,22 @@ def resolver_exp(expr):
             tmp_opdos[0] = fracao(tmp_opdos[0])
             tmp_opdos[1] = fracao(tmp_opdos[1])
 
+            if   e_adicao(expr):
+                resultado.opdos = [
+                  e.exp(e.VALOR, [
+                    tmp_opdos[0].opdos[0].opdos[0]
+                    * tmp_opdos[1].opdos[1].opdos[0]
+                    + tmp_opdos[1].opdos[0].opdos[0]
+                    * tmp_opdos[0].opdos[1].opdos[0],
+                    0
+                  ]),
+                  e.exp(e.VALOR, [
+                    tmp_opdos[0].opdos[1].opdos[0]
+                    * tmp_opdos[1].opdos[1].opdos[0],
+                    0
+                  ])
+                ]
+
 
             resultado.opdos[0] = tmp_opdos[0].opdos[0] + tmp_opdos[1].opdos[0]
         if e_subtracao(expr):
