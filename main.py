@@ -1,5 +1,7 @@
 import exp as e
+import exp_test as et
 import random as r
+import fracs as f
 
 # Lista do numero de repeticoes permitidas para cada operacao onde
 # operacoes_disponiveis[OPERACAO + 3] indica a quantidade permitida de
@@ -55,7 +57,7 @@ def escolher_op():
 # Retorna o resultado da expressao fornecida apos calcular seus operandos,
 # recursivamente, no formato de uma outra exp
 def resolver_exp(expr):
-    if e_operacao(expr):
+    if et.e_operacao(expr):
         resultado = e.exp(e.VALOR)
 
         tmp_opdos = [
@@ -63,19 +65,19 @@ def resolver_exp(expr):
           resolver_exp(expr.opdos[1])
         ]
 
-        if e_fracao(tmp_opdos[0]) or e_fracao(tmp_opdos[1]):
-            tmp_opdos[0] = fracao(tmp_opdos[0])
-            tmp_opdos[1] = fracao(tmp_opdos[1])
+        if et.e_fracao(tmp_opdos[0]) or et.e_fracao(tmp_opdos[1]):
+            tmp_opdos[0] = f.fracao(tmp_opdos[0])
+            tmp_opdos[1] = f.fracao(tmp_opdos[1])
 
-            if   e_adicao(expr):
-                resultado = somar_fracoes(tmp_opdos[0], tmp_opdos[1])
-            elif e_subtracao(expr):
-                resultado = subtrair_fracoes(tmp_opdos[0], tmp_opdos[1])
-            elif e_multiplicacao(expr):
-                resultado = multiplicar_fracoes(tmp_opdos[0], tmp_opdos[1])
-            elif e_divisao(expr):
-                resultado = dividir_fracoes(tmp_opdos[0], tmp_opdos[1])
-            elif e_potenciacao(expr):
+            if   et.e_adicao(expr):
+                resultado = f.somar(tmp_opdos[0], tmp_opdos[1])
+            elif et.e_subtracao(expr):
+                resultado = f.subtrair(tmp_opdos[0], tmp_opdos[1])
+            elif et.e_multiplicacao(expr):
+                resultado = f.multiplicar(tmp_opdos[0], tmp_opdos[1])
+            elif et.e_divisao(expr):
+                resultado = f.dividir(tmp_opdos[0], tmp_opdos[1])
+            elif et.e_potenciacao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
                     tmp_opdos[0].opdos[0].opdos[0]     \
@@ -91,7 +93,7 @@ def resolver_exp(expr):
                   ])
                 ]
 
-            elif e_radiciacao(expr):
+            elif et.e_radiciacao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
                     tmp_opdos[0].opdos[0].opdos[0]         \
@@ -108,19 +110,19 @@ def resolver_exp(expr):
                 ]
 
             return resultado
-        if   e_adicao(expr):
+        if   et.e_adicao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] + tmp_opdos[1].opdos[0]
-        elif e_subtracao(expr):
+        elif et.e_subtracao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] - tmp_opdos[1].opdos[0]
-        elif e_multiplicacao(expr):
+        elif et.e_multiplicacao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] * tmp_opdos[1].opdos[0]
-        elif e_divisao(expr):
+        elif et.e_divisao(expr):
             resultado.tipo = e.DIVISAO
             resultado.opdos = tmp_opdos
-        elif e_potenciacao(expr):
+        elif et.e_potenciacao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] \
                                  ** tmp_opdos[1].opdos[0]
-        elif e_radiciacao(expr):
+        elif et.e_radiciacao(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] \
                                  ** (1/tmp_opdos[1].opdos[0])
         return resultado
@@ -128,7 +130,7 @@ def resolver_exp(expr):
 
 # Mostra a exp e suas descendentes no formato de notacao do python
 def mostrar_exp(expr):
-    if e_operacao(expr):
+    if et.e_operacao(expr):
         sinal = None
         expr_final = " ( %s ) %s ( %s ) "
         if expr.tipo == e.IGUALDADE:     sinal = "=="
@@ -148,7 +150,7 @@ def mostrar_exp(expr):
 
 # Mostra a exp e suas descendentes no formato de notacao do python
 def mostrar_exp(expr):
-    if e_operacao(expr):
+    if et.e_operacao(expr):
         sinal = None
         expr_final = " ( %s ) %s ( %s ) "
         if expr.tipo == e.IGUALDADE:     sinal = "=="
@@ -168,7 +170,7 @@ def mostrar_exp(expr):
 
 # Retorna a exp fornecida reescrita em groff eqn
 def saida(expr):
-    if e_operacao(expr):
+    if et.e_operacao(expr):
         sinal = ""
         operandos = [" { %s } ", " { %s } "]
 
@@ -182,7 +184,7 @@ def saida(expr):
                 if mod(expr.opdos[0].tipo) != e.ADICAO:
                     operandos[0] = " { %s } "
             elif expr.opdos[0].tipo == e.INCOGNITA \
-             and not e_operacao(expr.opdos[1]):
+             and not et.e_operacao(expr.opdos[1]):
                 return operandos[0] % saida(expr.opdos[1]) \
                      + sinal                               \
                      + operandos[1] % saida(expr.opdos[0])
