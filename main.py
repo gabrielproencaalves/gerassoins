@@ -214,7 +214,7 @@ if __name__ == "__main__":
 
         # Calcular alteracoes aplicadas em x e armazenar noutro lado da
         # igualdade
-        raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
+        raiz.opdos[1] = resolver_exp(raiz.opdos[0])
 
         # Interpretar arvore de exp's, traduzi-la e guarda-la em um arquivo
         # e o x em outro
