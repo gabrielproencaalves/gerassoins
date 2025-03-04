@@ -495,7 +495,7 @@ if __name__ == "__main__":
         x = r.randint(x_min, x_max)
 
         # Armazena este valor a esquerda da igualdade
-        raiz.opdos[0] = e.exp(e.INCOGNITA, [x])
+        raiz.opdos[0] = e.exp(e.INCOGNITA, [x, 0])
 
         # Enquanto houver operacoes disponiveis para a arvore
         while(sum(operacoes_disponiveis) - sum(operacoes_utilizadas) > 0):
