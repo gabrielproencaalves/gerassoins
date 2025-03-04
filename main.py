@@ -1,5 +1,6 @@
 import exp as e
 import exp_test as et
+import exp_debug as edbg
 import random as r
 import fracs as f
 
@@ -127,46 +128,6 @@ def resolver_exp(expr):
                                  ** (1/tmp_opdos[1].opdos[0])
         return resultado
     return e.exp(e.VALOR, expr.opdos[:])
-
-# Mostra a exp e suas descendentes no formato de notacao do python
-def mostrar_exp(expr):
-    if et.e_operacao(expr):
-        sinal = None
-        expr_final = " ( %s ) %s ( %s ) "
-        if expr.tipo == e.IGUALDADE:     sinal = "=="
-        elif expr.tipo == e.ADICAO:        sinal = "+"
-        elif expr.tipo == e.SUBTRACAO:     sinal = "-"
-        elif expr.tipo == e.MULTIPLICACAO: sinal = "*"
-        elif expr.tipo == e.DIVISAO:       sinal = "/"
-        elif expr.tipo == e.POTENCIACAO:   sinal = "^^"
-        elif expr.tipo == e.RADICIACAO:    sinal = "vv"
-
-        return expr_final % \
-               (mostrar_exp(expr.opdos[0]),
-                sinal,
-                mostrar_exp(expr.opdos[1]))
-    return str(expr.opdos[0])
-
-
-# Mostra a exp e suas descendentes no formato de notacao do python
-def mostrar_exp(expr):
-    if et.e_operacao(expr):
-        sinal = None
-        expr_final = " ( %s ) %s ( %s ) "
-        if expr.tipo == e.IGUALDADE:     sinal = "=="
-        elif expr.tipo == e.ADICAO:        sinal = "+"
-        elif expr.tipo == e.SUBTRACAO:     sinal = "-"
-        elif expr.tipo == e.MULTIPLICACAO: sinal = "*"
-        elif expr.tipo == e.DIVISAO:       sinal = "/"
-        elif expr.tipo == e.POTENCIACAO:   sinal = "^^"
-        elif expr.tipo == e.RADICIACAO:    sinal = "vv"
-
-        return expr_final % \
-               (mostrar_exp(expr.opdos[0]),
-                sinal,
-                mostrar_exp(expr.opdos[1]))
-    return str(expr.opdos[0])
-
 
 # Retorna a exp fornecida reescrita em groff eqn
 def saida(expr):
