@@ -1,4 +1,5 @@
 import exp as e
+import exp_test as et
 
 # Retorna o nome extenso do tipo numerico recebido
 def tipo_str(tipo):
@@ -23,7 +24,7 @@ def tipo_str(tipo):
 
 # Mostra a exp e suas descendentes no formato de notacao do python
 def mostrar_exp(expr):
-    if expr.tipo != e.VALOR and expr.tipo != e.INCOGNITA:
+    if et.e_operacao(expr):
         sinal = None
         expr_final = " ( %s ) %s ( %s ) "
         if expr.tipo == e.IGUALDADE:     sinal = "=="
