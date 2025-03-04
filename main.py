@@ -84,6 +84,19 @@ def fracao(expr):
 
     return nexpr
 
+# Retorna nova exp resultante da soma das fracoes expr0 e expr1
+def somar_fracoes(expr0, expr1):
+    nexpr = e.exp(e.DIVISAO)
+    nexpr.opdos[0] = e.exp(e.VALOR, [0, 0])
+    nexpr.opdos[0].opdos[0] =   expr0.opdos[0].opdos[0] \
+                              * expr1.opdos[1].opdos[0] \
+                              + expr1.opdos[0].opdos[0] \
+                              * expr0.opdos[1].opdos[0]
+    nexpr.opdos[1] = e.exp(e.VALOR, [0, 0])
+    nexpr.opdos[1].opdos[0] =   expr0.opdos[1].opdos[0] \
+                              * expr1.opdos[1].opdos[0]
+    return nexpr
+
 # Retorna um produto de fatores primos equivalente a x
 def fatorar(x):
     # Declara lista onde ficarao os fatores
@@ -277,21 +290,7 @@ def resolver_exp(expr):
             tmp_opdos[1] = fracao(tmp_opdos[1])
 
             if   e_adicao(expr):
-                resultado.opdos = [
-                  e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]    \
-                    * tmp_opdos[1].opdos[1].opdos[0]  \
-                    + tmp_opdos[1].opdos[0].opdos[0]  \
-                    * tmp_opdos[0].opdos[1].opdos[0],
-                    0
-                  ]),
-                  e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[1].opdos[0] \
-                    * tmp_opdos[1].opdos[1].opdos[0],
-                    0
-                  ])
-                ]
-
+                resultado = somar_fracoes(tmp_opdos[0], tmp_opdos[1])
             elif e_subtracao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
