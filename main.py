@@ -71,12 +71,13 @@ def primos(x):
         # Retorne os primos encontrados
         return vals
 
-# Torna expr em uma exp equivalente, porem, em formato racional
+# Retorna uma exp equivalente a expr, porem, em formato racional
 def fracao(expr):
     nexpr = e.exp(e.DIVISAO)
 
     if e_fracao(expr):
-        nexpr.opdos = expr.opdos[:]
+        nexpr.opdos[0] = expr.opdos[0]
+        nexpr.opdos[1] = expr.opdos[1]
     else:
         nexpr.opdos[0] = e.exp(expr.tipo, expr.opdos[:])
         nexpr.opdos[1] = e.exp(e.VALOR, [1, 0])
