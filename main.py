@@ -514,10 +514,6 @@ if __name__ == "__main__":
         # igualdade
         raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
 
-        # Arredondar resultado da equacao deixando duas casas decimais
-        # apos a virgula
-        raiz.opdos[1].opdos[0] = round(raiz.opdos[1].opdos[0], precisao_decimal)
-
         # Interpretar arvore de exp's, traduzi-la e guarda-la em um arquivo
         # e o x em outro
         arquivo_saida.writelines([
