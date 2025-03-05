@@ -127,7 +127,7 @@ def resolver_exp(expr):
             resultado.opdos[0] = tmp_opdos[0].opdos[0] \
                                  ** (1/tmp_opdos[1].opdos[0])
         return resultado
-    return e.exp(e.VALOR, expr.opdos[:])
+    return expr.clone()
 
 # Retorna a exp fornecida reescrita em groff eqn
 def saida(expr):
