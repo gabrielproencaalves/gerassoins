@@ -61,7 +61,7 @@ def resolver_exp(expr):
     if et.e_operacao(expr):
         resultado = e.exp(e.VALOR)
 
-        tmp_opdos = [
+        opdos = [
           resolver_exp(expr.opdos[0]),
           resolver_exp(expr.opdos[1])
         ]
