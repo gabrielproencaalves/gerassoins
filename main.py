@@ -66,30 +66,30 @@ def resolver_exp(expr):
           resolver_exp(expr.opdos[1])
         ]
 
-        if et.e_fracao(tmp_opdos[0]) or et.e_fracao(tmp_opdos[1]):
-            tmp_opdos[0] = f.fracao(tmp_opdos[0])
-            tmp_opdos[1] = f.fracao(tmp_opdos[1])
+        if et.e_fracao(opdos[0]) or et.e_fracao(opdos[1]):
+            opdos[0] = f.fracao(opdos[0])
+            opdos[1] = f.fracao(opdos[1])
 
             if   et.e_adicao(expr):
-                resultado = f.somar(tmp_opdos[0], tmp_opdos[1])
+                resultado = f.somar(opdos[0], opdos[1])
             elif et.e_subtracao(expr):
-                resultado = f.subtrair(tmp_opdos[0], tmp_opdos[1])
+                resultado = f.subtrair(opdos[0], opdos[1])
             elif et.e_multiplicacao(expr):
-                resultado = f.multiplicar(tmp_opdos[0], tmp_opdos[1])
+                resultado = f.multiplicar(opdos[0], opdos[1])
             elif et.e_divisao(expr):
-                resultado = f.dividir(tmp_opdos[0], tmp_opdos[1])
+                resultado = f.dividir(opdos[0], opdos[1])
             elif et.e_potenciacao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]     \
-                    ** (tmp_opdos[1].opdos[0].opdos[0] \
-                        / tmp_opdos[1].opdos[1].opdos[0]),
+                    opdos[0].opdos[0].opdos[0]     \
+                    ** (opdos[1].opdos[0].opdos[0] \
+                        / opdos[1].opdos[1].opdos[0]),
                     0
                   ]),
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[1].opdos[0]     \
-                    ** (tmp_opdos[1].opdos[0].opdos[0] \
-                        / tmp_opdos[1].opdos[1].opdos[0]),
+                    opdos[0].opdos[1].opdos[0]     \
+                    ** (opdos[1].opdos[0].opdos[0] \
+                        / opdos[1].opdos[1].opdos[0]),
                     0
                   ])
                 ]
@@ -97,35 +97,35 @@ def resolver_exp(expr):
             elif et.e_radiciacao(expr):
                 resultado.opdos = [
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[0].opdos[0]         \
-                    ** (1 / tmp_opdos[1].opdos[0].opdos[0] \
-                        / tmp_opdos[1].opdos[1].opdos[0]),
+                    opdos[0].opdos[0].opdos[0]         \
+                    ** (1 / opdos[1].opdos[0].opdos[0] \
+                        / opdos[1].opdos[1].opdos[0]),
                     0
                   ]),
                   e.exp(e.VALOR, [
-                    tmp_opdos[0].opdos[1].opdos[0]         \
-                    ** (1 / tmp_opdos[1].opdos[0].opdos[0] \
-                        / tmp_opdos[1].opdos[1].opdos[0]),
+                    opdos[0].opdos[1].opdos[0]         \
+                    ** (1 / opdos[1].opdos[0].opdos[0] \
+                        / opdos[1].opdos[1].opdos[0]),
                     0
                   ])
                 ]
 
             return resultado
         if   et.e_adicao(expr):
-            resultado.opdos[0] = tmp_opdos[0].opdos[0] + tmp_opdos[1].opdos[0]
+            resultado.opdos[0] = opdos[0].opdos[0] + opdos[1].opdos[0]
         elif et.e_subtracao(expr):
-            resultado.opdos[0] = tmp_opdos[0].opdos[0] - tmp_opdos[1].opdos[0]
+            resultado.opdos[0] = opdos[0].opdos[0] - opdos[1].opdos[0]
         elif et.e_multiplicacao(expr):
-            resultado.opdos[0] = tmp_opdos[0].opdos[0] * tmp_opdos[1].opdos[0]
+            resultado.opdos[0] = opdos[0].opdos[0] * opdos[1].opdos[0]
         elif et.e_divisao(expr):
             resultado.tipo = e.DIVISAO
-            resultado.opdos = tmp_opdos
+            resultado.opdos = opdos
         elif et.e_potenciacao(expr):
-            resultado.opdos[0] = tmp_opdos[0].opdos[0] \
-                                 ** tmp_opdos[1].opdos[0]
+            resultado.opdos[0] = opdos[0].opdos[0] \
+                                 ** opdos[1].opdos[0]
         elif et.e_radiciacao(expr):
-            resultado.opdos[0] = tmp_opdos[0].opdos[0] \
-                                 ** (1/tmp_opdos[1].opdos[0])
+            resultado.opdos[0] = opdos[0].opdos[0] \
+                                 ** (1/opdos[1].opdos[0])
         return resultado
     return expr.clone()
 
