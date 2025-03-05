@@ -3,16 +3,9 @@ import exp_test as et
 
 # Retorna uma exp equivalente a expr, porem, em formato racional
 def fracao(expr):
-    nexpr = e.exp(e.DIVISAO)
-
     if et.e_fracao(expr):
-        nexpr.opdos[0] = expr.opdos[0]
-        nexpr.opdos[1] = expr.opdos[1]
-    else:
-        nexpr.opdos[0] = e.exp(expr.tipo, expr.opdos[:])
-        nexpr.opdos[1] = e.exp(e.VALOR, [1, 0])
-
-    return nexpr
+        return expr.clone()
+    return e.exp(e.DIVISAO, [expr.clone(), e.exp(e.VALOR, [1, 0])])
 
 # Retorna nova exp resultante da soma das fracoes expr0 e expr1
 def somar(expr0, expr1):
