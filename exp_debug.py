@@ -42,13 +42,16 @@ def mostrar_exp(expr):
     return str(expr.opdos[0])
 
 # Detalha recusivamente a exp atual e suas descendentes
-def detalhar_exp(expr, nivel=0):
+def detalhar_exp(expr, nivel=0, ptrs=[]):
+    for ptr in ptrs:
+        assert expr is ptr, f"Cyclical reference inside, and to, expr{expr}"
+
     tabulacao = "\t|" * nivel
     if type(expr) == e.exp:
-      print(tabulacao + "tipo  = " + tipo_str(expr.tipo))
-      print(tabulacao + "opdos = [")
-      detalhar_exp(expr.opdos[0], nivel + 1)
-      detalhar_exp(expr.opdos[1], nivel + 1)
-      print(tabulacao + "]")
+        print(tabulacao + "tipo  = " + tipo_str(expr.tipo))
+        print(tabulacao + "opdos = [")
+        detalhar_exp(expr.opdos[0], nivel + 1, ptrs + [expr])
+        detalhar_exp(expr.opdos[1], nivel + 1, ptrs + [expr])
+        print(tabulacao + "]")
     else:
         print(tabulacao + str(expr))
