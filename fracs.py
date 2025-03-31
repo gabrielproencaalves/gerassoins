@@ -3,7 +3,7 @@ import exp_test as et
 
 # Retorna uma exp equivalente a expr, porem, em formato racional
 def fracao(expr):
-    if et.e_fracao(expr):
+    if et.e_divisao(expr):
         return expr.clone()
     return e.exp(e.DIVISAO, [expr.clone(), e.exp(e.VALOR, [1, 0])])
 
@@ -62,7 +62,7 @@ def razao(expr):
     # [ ] Verificar se operandos de expr sao tambem
     # valores absolutos
 
-    if et.e_fracao(expr):
+    if et.e_divisao(expr):
         # Altera o tipo da exp para VALOR
         expr.tipo = e.VALOR
         # E atribui o resultado real da antiga frac a aquela
@@ -78,7 +78,7 @@ def razao(expr):
 # denominador e no numerador
 def simplificar(expr):
     # Se a exp for uma fracao de produtos de fatores primos
-    if  et.e_fracao(expr)                     \
+    if  et.e_divisao(expr)                    \
         and et.e_multiplicacao(expr.opdos[0]) \
         and et.e_multiplicacao(expr.opdos[1]):
 

@@ -21,10 +21,6 @@ def e_multiplicacao(expr):
 def e_divisao(expr):
     return expr.tipo == e.DIVISAO
 
-# Verifica se a expressao e uma fracao
-def e_fracao(expr):
-    return e_divisao(expr)
-
 # Verifica se a expressao e uma potenciacao
 def e_potenciacao(expr):
     return expr.tipo == e.POTENCIACAO

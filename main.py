@@ -66,7 +66,7 @@ def resolver_exp(expr):
           resolver_exp(expr.opdos[1])
         ]
 
-        if et.e_fracao(opdos[0]) or et.e_fracao(opdos[1]):
+        if et.e_divisao(opdos[0]) or et.e_divisao(opdos[1]):
             opdos[0] = f.fracao(opdos[0])
             opdos[1] = f.fracao(opdos[1])
 
