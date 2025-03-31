@@ -297,7 +297,7 @@ if __name__ == "__main__":
         # Interpretar arvore de exp's, traduzi-la e guarda-la em um arquivo
         # e o x em outro
         arquivo_saida.writelines([
-            "\\n+[step])  $ " + saida(raiz) + " $\n",
+            "\\n+[step])  $ " + saida(raiz).replace(".", ",") + " $\n",
             ".sp\n"
         ])
 
