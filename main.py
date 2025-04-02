@@ -71,14 +71,15 @@ def resolver_exp(expr):
             opdos[1] = f.fracao(opdos[1])
 
             if   et.e_adicao(expr):
-                resultado = f.somar(opdos[0], opdos[1])
+                return f.somar(opdos[0], opdos[1])
             elif et.e_subtracao(expr):
-                resultado = f.subtrair(opdos[0], opdos[1])
+                return f.subtrair(opdos[0], opdos[1])
             elif et.e_multiplicacao(expr):
-                resultado = f.multiplicar(opdos[0], opdos[1])
+                return f.multiplicar(opdos[0], opdos[1])
             elif et.e_divisao(expr):
-                resultado = f.dividir(opdos[0], opdos[1])
+                return f.dividir(opdos[0], opdos[1])
             elif et.e_potenciacao(expr):
+                # Simplificar linhas abaixo via modularizacao
                 resultado.opdos = [
                   e.exp(e.VALOR, [
                     opdos[0].opdos[0].opdos[0]     \
@@ -95,6 +96,7 @@ def resolver_exp(expr):
                 ]
 
             elif et.e_radiciacao(expr):
+                # Simplificar linhas abaixo via modularizacao
                 resultado.opdos = [
                   e.exp(e.VALOR, [
                     opdos[0].opdos[0].opdos[0]         \
