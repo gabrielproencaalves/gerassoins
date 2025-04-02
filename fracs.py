@@ -5,57 +5,85 @@ import exp_test as et
 def fracao(expr):
     if et.e_divisao(expr):
         return expr.clone()
-    return e.exp(e.DIVISAO, [expr.clone(), e.exp(e.VALOR, [1, 0])])
+    return e.exp(e.DIVISAO, [
+        expr.clone(),
+        e.exp(e.VALOR, [1, 0])
+    ])
 
-# Retorna nova exp resultante da soma das fracoes expr0 e expr1
-def somar(expr0, expr1):
-    nexpr = e.exp(e.DIVISAO)
-    nexpr.opdos[0] = e.exp(e.VALOR, [0, 0])
-    nexpr.opdos[0].opdos[0] =   expr0.opdos[0].opdos[0] \
-                              * expr1.opdos[1].opdos[0] \
-                              + expr1.opdos[0].opdos[0] \
-                              * expr0.opdos[1].opdos[0]
-    nexpr.opdos[1] = e.exp(e.VALOR, [0, 0])
-    nexpr.opdos[1].opdos[0] =   expr0.opdos[1].opdos[0] \
-                              * expr1.opdos[1].opdos[0]
-    return nexpr
+# Retorna o endereço do numerador da fracao frac
+def numerador(frac):
+    assert et.e_divisao(frac), "Trying to extract a non-fraction numerator"
+    return frac.opdos[0]
 
-# Retorna nova exp resultante da subtracao das fracoes expr0 e expr1
-def subtrair(expr0, expr1):
-    nexpr = e.exp(e.DIVISAO)
-    nexpr.opdos[0] = e.exp(e.VALOR, [0, 0])
-    nexpr.opdos[0].opdos[0] =   expr0.opdos[0].opdos[0] \
-                              * expr1.opdos[1].opdos[0] \
-                              - expr1.opdos[0].opdos[0] \
-                              * expr0.opdos[1].opdos[0]
-    nexpr.opdos[1] = e.exp(e.VALOR, [0, 0])
-    nexpr.opdos[1].opdos[0] =   expr0.opdos[1].opdos[0] \
-                              * expr1.opdos[1].opdos[0]
-    return nexpr
+# Retorna o endereço do denominador da fracao frac
+def denominador(frac):
+    assert et.e_divisao(frac), "Trying to extract a non-fraction denominator"
+    return frac.opdos[1]
 
-# Retorna nova exp resultante da multiplicacao das fracoes expr0 e expr1
-def multiplicar(expr0, expr1):
-    nexpr = e.exp(e.DIVISAO)
-    nexpr.opdos[0] = e.exp(e.VALOR, [0, 0])
-    nexpr.opdos[0].opdos[0] =   expr0.opdos[0].opdos[0] \
-                              * expr1.opdos[0].opdos[0]
 
-    nexpr.opdos[1] = e.exp(e.VALOR, [0, 0])
-    nexpr.opdos[1].opdos[0] =   expr0.opdos[1].opdos[0] \
-                              * expr1.opdos[1].opdos[0]
-    return nexpr
+# Retorna nova exp resultante da soma das fracoes frac0 e frac1
+def somar(frac0, frac1):
+    return e.exp(e.DIVISAO, [
+        e.exp(e.VALOR, [
+            numerador(frac0).opdos[0]     \
+            * denominador(frac1).opdos[0] \
+            + numerador(frac1).opdos[0]   \
+            * denominador(frac0).opdos[0],
+            0
+        ]),
+        e.exp(e.VALOR, [
+            denominador(frac0).opdos[0]
+            * denominador(frac1).opdos[0],
+            0
+        ])
+    ])
 
-# Retorna nova exp resultante da divisao das fracoes expr0 e expr1
-def dividir(expr0, expr1):
-    nexpr = e.exp(e.DIVISAO)
-    nexpr.opdos[0] = e.exp(e.VALOR, [0, 0])
-    nexpr.opdos[0].opdos[0] =   expr0.opdos[0].opdos[0] \
-                              * expr1.opdos[1].opdos[0]
+# Retorna nova exp resultante da subtracao das fracoes frac0 e frac1
+def subtrair(frac0, frac1):
+    return e.exp(e.DIVISAO, [
+        e.exp(e.VALOR, [
+            numerador(frac0).opdos[0]     \
+            * denominador(frac1).opdos[0] \
+            - numerador(frac1).opdos[0]   \
+            * denominador(frac0).opdos[0],
+            0
+        ]),
+        e.exp(e.VALOR, [
+            denominador(frac0).opdos[0]
+            * denominador(frac1).opdos[0],
+            0
+        ])
+    ])
 
-    nexpr.opdos[1] = e.exp(e.VALOR, [0, 0])
-    nexpr.opdos[1].opdos[0] =   expr0.opdos[1].opdos[0] \
-                              * expr1.opdos[0].opdos[0]
-    return nexpr
+# Retorna nova exp resultante da multiplicacao das fracoes frac0 e frac1
+def multiplicar(frac0, frac1):
+    return e.exp(e.DIVISAO, [
+        e.exp(e.VALOR, [
+            numerador(frac0).opdos[0]
+            * numerador(frac1).opdos[0],
+            0
+        ]),
+        e.exp(e.VALOR, [
+            denominador(frac0).opdos[0]
+            * denominador(frac1).opdos[0],
+            0
+        ])
+    ])
+
+# Retorna nova exp resultante da divisao das fracoes frac0 e frac1
+def dividir(frac0, frac1):
+    return e.exp(e.DIVISAO, [
+        e.exp(e.VALOR, [
+            numerador(frac0).opdos[0]
+            * denominador(frac1).opdos[0],
+            0
+        ]),
+        e.exp(e.VALOR, [
+            denominador(frac0).opdos[0]
+            * numerador(frac1).opdos[0],
+            0
+        ])
+    ])
 
 # Torna uma fracao expr em seu resultado absoluto
 def razao(expr):
