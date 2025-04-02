@@ -114,21 +114,35 @@ def resolver_exp(expr):
 
             return resultado
         if   et.e_adicao(expr):
-            resultado.opdos[0] = opdos[0].opdos[0] + opdos[1].opdos[0]
+            return e.exp(e.VALOR, [
+                opdos[0].opdos[0] + opdos[1].opdos[0],
+                0
+            ])
         elif et.e_subtracao(expr):
-            resultado.opdos[0] = opdos[0].opdos[0] - opdos[1].opdos[0]
+            return e.exp(e.VALOR, [
+                opdos[0].opdos[0] - opdos[1].opdos[0],
+                0
+            ])
         elif et.e_multiplicacao(expr):
-            resultado.opdos[0] = opdos[0].opdos[0] * opdos[1].opdos[0]
+            return e.exp(e.VALOR, [
+                opdos[0].opdos[0] * opdos[1].opdos[0],
+                0
+            ])
         elif et.e_divisao(expr):
-            resultado.tipo = e.DIVISAO
-            resultado.opdos = opdos
+            return e.exp(e.DIVISAO, [
+                opdos[0].clone(),
+                opdos[1].clone()
+            ])
         elif et.e_potenciacao(expr):
-            resultado.opdos[0] = opdos[0].opdos[0] \
-                                 ** opdos[1].opdos[0]
+            return e.exp(e.VALOR, [
+                opdos[0].opdos[0] ** opdos[1].opdos[0],
+                0
+            ])
         elif et.e_radiciacao(expr):
-            resultado.opdos[0] = opdos[0].opdos[0] \
-                                 ** (1/opdos[1].opdos[0])
-        return resultado
+            return e.exp(e.VALOR, [
+                opdos[0].opdos[0] ** (1 / opdos[1].opdos[0]),
+                0
+            ])
     return expr.clone()
 
 # Retorna a exp fornecida reescrita em groff eqn
@@ -144,7 +158,7 @@ def saida(expr):
             if  expr.opdos[0].tipo != e.INCOGNITA \
             and expr.opdos[1].tipo != e.INCOGNITA:
                 operandos = [" { ( %s ) } ", " { ( %s ) } "]
-                if mod(expr.opdos[0].tipo) != e.ADICAO:
+                if not et.e_adicao(expr.opdos[0]):
                     operandos[0] = " { %s } "
             elif expr.opdos[0].tipo == e.INCOGNITA \
              and not et.e_operacao(expr.opdos[1]):
