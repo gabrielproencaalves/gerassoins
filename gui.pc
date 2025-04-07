@@ -1,0 +1,26 @@
+root:
+  FramelabelOperacoes:
+    LabelSoma
+    LabelSubtracao
+    LabelMultiplicacao
+    LabelDivisao
+    LabelPotenciacao
+    LabelRadicicacao
+  FramelabelLimites:
+    LabelDe
+    LabelAte
+    LabelK
+    SpinKDe
+    SpinKAte
+    LabelX
+    SpinXDe
+    SpinXAte
+    LabelPrecisaoDecimal
+    SpinPrecisaoDecimal
+    LabelEquacoes
+    SpinEquacoes
+  FramelabelArquivos
+    LabelCaminhoFinal
+    FileDialog.asksaveasfilenameCaminhoFinal
+    EntryCaminhoFinal
+  ButtonGerar
