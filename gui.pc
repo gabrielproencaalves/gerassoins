@@ -1,27 +1,27 @@
-root:
-  FrameBase:
-    LabelframeOperacoes:
-      LabelSoma
-      LabelSubtracao
-      LabelMultiplicacao
-      LabelDivisao
-      LabelPotenciacao
-      LabelRadicicacao
-    LabelframeLimites:
-      LabelDe
-      LabelAte
-      LabelK
-      SpinKDe
-      SpinKAte
-      LabelX
-      SpinXDe
-      SpinXAte
-      LabelPrecisaoDecimal
-      SpinPrecisaoDecimal
-      LabelEquacoes
-      SpinEquacoes
-    LabelframeArquivos
-      LabelCaminhoFinal
-      FileDialog.asksaveasfilenameCaminhoFinal
-      EntryCaminhoFinal
-    ButtonGerar
+[x]  root:
+[x]    FrameBase:
+[x]      LabelframeOperacoes:
+[x]        LabelSoma
+[x]        LabelSubtracao
+[x]        LabelMultiplicacao
+[x]        LabelDivisao
+[x]        LabelPotenciacao
+[x]        LabelRadicicacao
+[x]      LabelframeLimites:
+[x]        LabelDe
+[x]        LabelAte
+[x]        LabelK
+[ ]        SpinKDe
+[ ]        SpinKAte
+[x]        LabelX
+[ ]        SpinXDe
+[ ]        SpinXAte
+[x]        LabelPrecisaoDecimal
+[ ]        SpinPrecisaoDecimal
+[x]        LabelEquacoes
+[ ]        SpinEquacoes
+[ ]      LabelframeArquivos
+[ ]        LabelCaminhoFinal
+[ ]        FileDialog.asksaveasfilenameCaminhoFinal
+[ ]        EntryCaminhoFinal
+[ ]      ButtonGerar
