@@ -10,8 +10,16 @@ rootFrameBase = ttk.Frame(root, padding=10)
 rootFrameBase.grid()
 
 # Labelframe para as operacoes
-BaseLabelframeOperacoes = ttk.LabelFrame(rootFrameBase, text="Operações", padding=10)
-BaseLabelframeOperacoes.grid()
+BaseLabelframeOperacoes = ttk.LabelFrame(
+    rootFrameBase,
+    text="Operações",
+    padding=10
+)
+BaseLabelframeOperacoes.grid(
+    column=0,
+    row=0,
+    sticky=(N,S,E,W)
+)
 
 # Label de soma
 OperacoesLabelSoma = ttk.Label(BaseLabelframeOperacoes, text="+")
@@ -112,7 +120,12 @@ BaseLabelframeLimites = ttk.Labelframe(
     text="Limites",
     padding=10
 )
-BaseLabelframeLimites.grid()
+BaseLabelframeLimites.configure()
+BaseLabelframeLimites.grid(
+    column=0,
+    row=1,
+    sticky=(N,S,E,W)
+)
 
 # Label 'de'
 LimitesLabelDe = ttk.Label(
@@ -124,7 +137,7 @@ LimitesLabelDe.grid(column=1, row=0)
 # Label 'ate'
 LimitesLabelAte = ttk.Label(
     BaseLabelframeLimites,
-    text="Ate"
+    text="Até"
 )
 LimitesLabelAte.grid(column=2, row=0)
 
@@ -142,8 +155,20 @@ LimitesSpinKDe = ttk.Spinbox(
     to=100,
     textvariable=LimitesSpinvarKDe
 )
+LimitesSpinKDe.configure(width=3)
 LimitesSpinKDe.grid(column=1, row=1)
-LimitesSpinKDe.set(10)
+LimitesSpinKDe.set(1)
+# Spin KAte
+LimitesSpinvarKAte = StringVar()
+LimitesSpinKAte = ttk.Spinbox(
+    BaseLabelframeLimites,
+    from_=-100,
+    to=100,
+    textvariable=LimitesSpinvarKAte
+)
+LimitesSpinKAte.configure(width=3)
+LimitesSpinKAte.grid(column=2, row=1)
+LimitesSpinKAte.set(10)
 
 # Label X
 LimitesLabelX = ttk.Label(
@@ -151,6 +176,28 @@ LimitesLabelX = ttk.Label(
     text="X (variável):"
 )
 LimitesLabelX.grid(column=0, row=2)
+# Spin XDe
+LimitesSpinvarXDe = StringVar()
+LimitesSpinXDe = ttk.Spinbox(
+    BaseLabelframeLimites,
+    from_=-100,
+    to=100,
+    textvariable=LimitesSpinvarXDe
+)
+LimitesSpinXDe.configure(width=3)
+LimitesSpinXDe.grid(column=1, row=2)
+LimitesSpinXDe.set(1)
+# Spin XAte
+LimitesSpinvarXAte = StringVar()
+LimitesSpinXAte = ttk.Spinbox(
+    BaseLabelframeLimites,
+    from_=-100,
+    to=100,
+    textvariable=LimitesSpinvarXAte
+)
+LimitesSpinXAte.configure(width=3)
+LimitesSpinXAte.grid(column=2, row=2)
+LimitesSpinXAte.set(10)
 
 # Label Precisao Decimal
 LimitesLabelPrecisaoDecimal = ttk.Label(
@@ -158,6 +205,24 @@ LimitesLabelPrecisaoDecimal = ttk.Label(
     text="Precisão decimal:"
 )
 LimitesLabelPrecisaoDecimal.grid(column=0, row=3)
+# Spin Precisao Decimal De
+LimitesSpinPrecisaoDecimalDe = ttk.Spinbox(
+    BaseLabelframeLimites
+)
+LimitesSpinPrecisaoDecimalDe.configure(state="disabled", width=3)
+LimitesSpinPrecisaoDecimalDe.grid(column=1, row=3)
+LimitesSpinPrecisaoDecimalDe.set(0)
+# Spin Precisao Decimal Ate
+LimitesSpinvarPrecisaoDecimalAte = StringVar()
+LimitesSpinPrecisaoDecimalAte = ttk.Spinbox(
+    BaseLabelframeLimites,
+    from_=0,
+    to=4,
+    textvariable=LimitesSpinvarPrecisaoDecimalAte
+)
+LimitesSpinPrecisaoDecimalAte.configure(width=3)
+LimitesSpinPrecisaoDecimalAte.grid(column=2, row=3)
+LimitesSpinPrecisaoDecimalAte.set(2)
 
 # Label Equacoes
 LimitesLabelEquacoes = ttk.Label(
@@ -165,6 +230,24 @@ LimitesLabelEquacoes = ttk.Label(
     text="Equações:"
 )
 LimitesLabelEquacoes.grid(column=0, row=4)
+# Spin Equacoes De
+LimitesSpinEquacoesDe = ttk.Spinbox(
+    BaseLabelframeLimites
+)
+LimitesSpinEquacoesDe.configure(state="disabled", width=3)
+LimitesSpinEquacoesDe.grid(column=1, row=4)
+LimitesSpinEquacoesDe.set(0)
+# Spin Equacoes Ate
+LimitesSpinvarEquacoesAte = StringVar()
+LimitesSpinEquacoesAte = ttk.Spinbox(
+    BaseLabelframeLimites,
+    from_=0,
+    to=100,
+    textvariable=LimitesSpinvarEquacoesAte
+)
+LimitesSpinEquacoesAte.configure(width=3)
+LimitesSpinEquacoesAte.grid(column=2, row=4)
+LimitesSpinEquacoesAte.set(40)
 
 # Tk mainloop
 root.mainloop()
