@@ -8,7 +8,7 @@
 [x]        LabelPotenciacao
 [x]        LabelRadicicacao
 [x]      LabelframeLimites:
-[ ]        centralizar os conteúdos abaixo
+[x]        centralizar os conteúdos abaixo
 [x]        LabelDe
 [x]        LabelAte
 [x]        LabelK
