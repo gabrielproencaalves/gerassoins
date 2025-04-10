@@ -25,4 +25,4 @@
 [ ]        LabelCaminhoFinal
 [ ]        FileDialog.asksaveasfilenameCaminhoFinal
 [ ]        EntryCaminhoFinal
-[ ]      ButtonGerar
+[x]      ButtonGerar
