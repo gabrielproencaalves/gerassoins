@@ -4,6 +4,7 @@ from tkinter import ttk
 # Janela raiz
 root = Tk()
 root.title("Gerassoins")
+root.resizable(False, False)
 
 # Frame basico
 rootFrameBase = ttk.Frame(root, padding=10)
@@ -125,6 +126,10 @@ BaseLabelframeLimites.grid(
     column=0,
     row=1,
     sticky=(N,S,E,W)
+)
+BaseLabelframeLimites.columnconfigure(
+    index=(0, 1, 2),
+    pad=60
 )
 
 # Label 'de'
