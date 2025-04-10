@@ -121,7 +121,6 @@ BaseLabelframeLimites = ttk.Labelframe(
     text="Limites",
     padding=10
 )
-BaseLabelframeLimites.configure()
 BaseLabelframeLimites.grid(
     column=0,
     row=1,
@@ -253,6 +252,18 @@ LimitesSpinEquacoesAte = ttk.Spinbox(
 LimitesSpinEquacoesAte.configure(width=3)
 LimitesSpinEquacoesAte.grid(column=2, row=4)
 LimitesSpinEquacoesAte.set(40)
+
+BaseButtonGerar = ttk.Button(
+    rootFrameBase,
+    text="Gerar",
+    command=root.destroy,
+    padding=10
+)
+BaseButtonGerar.grid(
+    column=0,
+    row=2,
+    pady=10
+)
 
 # Tk mainloop
 root.mainloop()
