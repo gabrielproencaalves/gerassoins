@@ -234,7 +234,9 @@ def saida(expr):
 
     return " { x } "
 
-if __name__ == "__main__":
+# Programa principal
+def main():
+    global operacoes_utilizadas
 
     # Abre o arquivo de saida de equacoes, truncando-o
     arquivo_saida = open(caminho_saida, "w+")
@@ -300,3 +302,6 @@ if __name__ == "__main__":
             "\\n+[step])  $ x = ", str(x), " $\n",
             ".br\n"
         ])
+
+if __name__ == "__main__":
+    main()
