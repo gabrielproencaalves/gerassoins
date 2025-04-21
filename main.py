@@ -234,7 +234,9 @@ def saida(expr):
 
     return " { x } "
 
-if __name__ == "__main__":
+# Programa principal
+def main():
+    global operacoes_utilizadas
 
     # Abre o arquivo de saida de equacoes, truncando-o
     arquivo_saida = open(caminho_saida, "w+")
@@ -283,7 +285,14 @@ if __name__ == "__main__":
 
         # Calcular alteracoes aplicadas em x e armazenar noutro lado da
         # igualdade
-        raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
+        try:
+            raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
+        # Se houver um erro de divisao por zero
+        except ZeroDivisionError:
+            # Tente tudo novamente
+            main()
+            # Interrompa a funcao atual
+            return
 
         # Arredondar resultado da equacao deixando duas casas decimais
         # apos a virgula
@@ -300,3 +309,6 @@ if __name__ == "__main__":
             "\\n+[step])  $ x = ", str(x), " $\n",
             ".br\n"
         ])
+
+if __name__ == "__main__":
+    main()
