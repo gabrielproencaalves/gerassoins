@@ -285,7 +285,14 @@ def main():
 
         # Calcular alteracoes aplicadas em x e armazenar noutro lado da
         # igualdade
-        raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
+        try:
+            raiz.opdos[1] = e.exp(e.VALOR, [resolver_exp(raiz.opdos[0]), 0])
+        # Se houver um erro de divisao por zero
+        except ZeroDivisionError:
+            # Tente tudo novamente
+            main()
+            # Interrompa a funcao atual
+            return
 
         # Arredondar resultado da equacao deixando duas casas decimais
         # apos a virgula
