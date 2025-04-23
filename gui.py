@@ -31,6 +31,30 @@ global LimitesSpinvarPrecisaoDecimalAte
 
 class gerassoins():
     def __init__(self, root):
+        global OperacoesSpinvarRadiciacao
+        global OperacoesSpinvarDivisao
+        global OperacoesSpinvarSubtracao
+        global OperacoesSpinvarSoma
+        global OperacoesSpinvarMultiplicacao
+        global OperacoesSpinvarPotenciacao
+
+        # Limite maximo dos operandos e coeficientes inseridos nas equacoes
+        global LimitesSpinvarKAte
+
+        # Limite minimo dos operandos e coeficientes inseridos nas equacoes
+        global LimitesSpinvarKDe
+
+        # Limite maximo de x, ou seja, do resultado das equacoes
+        global LimitesSpinvarXAte
+
+        # Limite minimo de x, ou seja, do resultado das equacoes
+        global LimitesSpinvarXDe
+
+        # Quantidade padrao de equacoes
+        global LimitesSpinvarEquacoesAte
+
+        # Precisao de arredondamento
+        global LimitesSpinvarPrecisaoDecimalAte
 
         # Janela raiz
         root.title("Gerassoins")
