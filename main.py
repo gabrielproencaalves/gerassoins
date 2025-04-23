@@ -1,5 +1,7 @@
 import exp as e
 import random as r
+import gui
+from tkinter import Tk
 
 # Lista do numero de repeticoes permitidas para cada operacao onde
 # operacoes_disponiveis[OPERACAO + 3] indica a quantidade permitida de
@@ -12,24 +14,30 @@ global operacoes_utilizadas
 operacoes_utilizadas  = [0, 0, 0, 0, 0, 0, 0]
 
 # Limite maximo dos operandos e coeficientes inseridos nas equacoes
+global k_max
 k_max = 10
 
 # Limite minimo dos operandos e coeficientes inseridos nas equacoes
+global k_min
 k_min = 1
 
 # Limite maximo de x, ou seja, do resultado das equacoes
+global x_max
 x_max = 10
 
 # Limite minimo de x, ou seja, do resultado das equacoes
+global x_min
 x_min = 1
 
 # Quantidade padrao de equacoes
+global eqs
 eqs   = 40
 
 # Nome do arquivo de saida
 caminho_saida = "output.ms"
 
 # Precisao de arredondamento
+global precisao_decimal
 precisao_decimal = 2
 
 # Retorna o modulo de um inteiro
