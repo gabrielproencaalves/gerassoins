@@ -330,3 +330,63 @@ class gerassoins():
             row=2,
             pady=10
         )
+
+    def gerar(self):
+        global OperacoesSpinvarRadiciacao
+        global OperacoesSpinvarDivisao
+        global OperacoesSpinvarSubtracao
+        global OperacoesSpinvarSoma
+        global OperacoesSpinvarMultiplicacao
+        global OperacoesSpinvarPotenciacao
+
+        # Limite maximo dos operandos e coeficientes inseridos nas equacoes
+        global LimitesSpinvarKAte
+
+        # Limite minimo dos operandos e coeficientes inseridos nas equacoes
+        global LimitesSpinvarKDe
+
+        # Limite maximo de x, ou seja, do resultado das equacoes
+        global LimitesSpinvarXAte
+
+        # Limite minimo de x, ou seja, do resultado das equacoes
+        global LimitesSpinvarXDe
+
+        # Quantidade padrao de equacoes
+        global LimitesSpinvarEquacoesAte
+
+        # Precisao de arredondamento
+        global LimitesSpinvarPrecisaoDecimalAte
+
+        # Lista do numero de repeticoes permitidas para cada operacao onde
+        # operacoes_disponiveis[OPERACAO + 3] indica a quantidade permitida de
+        # ocorrencias de OPERACAO nas equacoes
+        m.operacoes_disponiveis = [
+            OperacoesSpinvarRadiciacao.get(),
+            OperacoesSpinvarDivisao.get(),
+            OperacoesSpinvarSubtracao.get(),
+            0,
+            OperacoesSpinvarSoma.get(),
+            OperacoesSpinvarMultiplicacao.get(),
+            OperacoesSpinvarPotenciacao.get()
+        ]
+
+        # Limite maximo dos operandos e coeficientes inseridos nas equacoes
+        m.k_max = LimitesSpinvarKAte.get()
+
+        # Limite minimo dos operandos e coeficientes inseridos nas equacoes
+        m.k_min = LimitesSpinvarKDe.get()
+
+        # Limite maximo de x, ou seja, do resultado das equacoes
+        m.x_max = LimitesSpinvarXAte.get()
+
+        # Limite minimo de x, ou seja, do resultado das equacoes
+        m.x_min = LimitesSpinvarXDe.get()
+
+        # Quantidade padrao de equacoes
+        m.eqs   = LimitesSpinvarEquacoesAte.get()
+
+        # Precisao de arredondamento
+        m.precisao_decimal = LimitesSpinvarPrecisaoDecimalAte.get()
+
+        # Executa arquivo principal
+        m.main()
