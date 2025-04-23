@@ -1,3 +1,5 @@
+import exp as e
+import main as m
 from tkinter import *
 from tkinter import ttk
 import main
