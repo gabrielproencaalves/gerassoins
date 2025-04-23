@@ -325,4 +325,6 @@ def main():
         ])
 
 if __name__ == "__main__":
-    main()
+    root = Tk()
+    gui.gerassoins(root)
+    root.mainloop()
