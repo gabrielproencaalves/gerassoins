@@ -80,76 +80,86 @@ class gerassoins():
         OperacoesLabelSoma = ttk.Label(BaseLabelframeOperacoes, text="+")
         OperacoesLabelSoma.grid(column=0, row=0, padx=10)
         # Spinbox de soma
-        OperacoesSpinboxvarSoma = StringVar()
-        OperacoesSpinboxSoma = ttk.Spinbox(
+        OperacoesSpinvarSoma = IntVar()
+        OperacoesSpinSoma = ttk.Spinbox(
             BaseLabelframeOperacoes,
             from_=0,
             to=100,
-            textvariable=OperacoesSpinboxvarSoma
+            textvariable=OperacoesSpinvarSoma
         )
-        OperacoesSpinboxSoma.configure(width=3)
-        OperacoesSpinboxSoma.grid(column=0, row=1, padx=10)
-        OperacoesSpinboxSoma.set(1)
+        OperacoesSpinSoma.configure(width=3)
+        OperacoesSpinSoma.grid(column=0, row=1, padx=10)
+        OperacoesSpinSoma.set(
+            m.operacoes_disponiveis[e.ADICAO + 3]
+        )
 
         # Label de subtracao
         OperacoesLabelSubtracao = ttk.Label(BaseLabelframeOperacoes, text="-")
         OperacoesLabelSubtracao.grid(column=1, row=0, padx=10)
         # Spinbox de subtracao
-        OperacoesSpinboxvarSubtracao = StringVar()
-        OperacoesSpinboxSubtracao = ttk.Spinbox(
+        OperacoesSpinvarSubtracao = IntVar()
+        OperacoesSpinSubtracao = ttk.Spinbox(
             BaseLabelframeOperacoes,
             from_=0,
             to=100,
-            textvariable=OperacoesSpinboxvarSubtracao
+            textvariable=OperacoesSpinvarSubtracao
         )
-        OperacoesSpinboxSubtracao.configure(width=3)
-        OperacoesSpinboxSubtracao.grid(column=1, row=1, padx=10)
-        OperacoesSpinboxSubtracao.set(1)
+        OperacoesSpinSubtracao.configure(width=3)
+        OperacoesSpinSubtracao.grid(column=1, row=1, padx=10)
+        OperacoesSpinSubtracao.set(
+            m.operacoes_disponiveis[e.SUBTRACAO + 3]
+        )
 
         # Label de multiplicacao
         OperacoesLabelMultiplicacao = ttk.Label(BaseLabelframeOperacoes, text="×")
         OperacoesLabelMultiplicacao.grid(column=2, row=0, padx=10)
         # Spinbox de multiplicacao
-        OperacoesSpinboxvarMultiplicacao = StringVar()
-        OperacoesSpinboxMultiplicacao = ttk.Spinbox(
+        OperacoesSpinvarMultiplicacao = IntVar()
+        OperacoesSpinMultiplicacao = ttk.Spinbox(
             BaseLabelframeOperacoes,
             from_=0,
             to=100,
-            textvariable=OperacoesSpinboxvarMultiplicacao
+            textvariable=OperacoesSpinvarMultiplicacao
         )
-        OperacoesSpinboxMultiplicacao.configure(width=3)
-        OperacoesSpinboxMultiplicacao.grid(column=2, row=1, padx=10)
-        OperacoesSpinboxMultiplicacao.set(1)
+        OperacoesSpinMultiplicacao.configure(width=3)
+        OperacoesSpinMultiplicacao.grid(column=2, row=1, padx=10)
+        OperacoesSpinMultiplicacao.set(
+            m.operacoes_disponiveis[e.MULTIPLICACAO + 3]
+        )
 
         # Label de divisao
         OperacoesLabelDivisao = ttk.Label(BaseLabelframeOperacoes, text="÷")
         OperacoesLabelDivisao.grid(column=3, row=0, padx=10)
-        # Spinbox de divisao
-        OperacoesSpinboxvarDivisao = StringVar()
-        OperacoesSpinboxDivisao = ttk.Spinbox(
+        # Spin de divisao
+        OperacoesSpinvarDivisao = IntVar()
+        OperacoesSpinDivisao = ttk.Spinbox(
             BaseLabelframeOperacoes,
             from_=0,
             to=100,
-            textvariable=OperacoesSpinboxvarDivisao
+            textvariable=OperacoesSpinvarDivisao
         )
-        OperacoesSpinboxDivisao.configure(width=3)
-        OperacoesSpinboxDivisao.grid(column=3, row=1, padx=10)
-        OperacoesSpinboxDivisao.set(1)
+        OperacoesSpinDivisao.configure(width=3)
+        OperacoesSpinDivisao.grid(column=3, row=1, padx=10)
+        OperacoesSpinDivisao.set(
+            m.operacoes_disponiveis[e.DIVISAO + 3]
+        )
 
         # Label de potenciacao
         OperacoesLabelPotenciacao = ttk.Label(BaseLabelframeOperacoes, text="kⁿ")
         OperacoesLabelPotenciacao.grid(column=4, row=0, padx=10)
         # Spinbox de potenciacao
-        OperacoesSpinboxvarPotenciacao = StringVar()
-        OperacoesSpinboxPotenciacao = ttk.Spinbox(
+        OperacoesSpinvarPotenciacao = IntVar()
+        OperacoesSpinPotenciacao = ttk.Spinbox(
             BaseLabelframeOperacoes,
             from_=0,
             to=100,
-            textvariable=OperacoesSpinboxvarPotenciacao
+            textvariable=OperacoesSpinvarPotenciacao
         )
-        OperacoesSpinboxPotenciacao.configure(width=3)
-        OperacoesSpinboxPotenciacao.grid(column=4, row=1, padx=10)
-        OperacoesSpinboxPotenciacao.set(0)
+        OperacoesSpinPotenciacao.configure(width=3)
+        OperacoesSpinPotenciacao.grid(column=4, row=1, padx=10)
+        OperacoesSpinPotenciacao.set(
+            m.operacoes_disponiveis[e.POTENCIACAO + 3]
+        )
 
         # Label de radiciacao
         OperacoesLabelRadiciacao = ttk.Label(
@@ -158,16 +168,18 @@ class gerassoins():
         )
         OperacoesLabelRadiciacao.grid(column=5, row=0, padx=10)
         # Spinbox de radiciacao
-        OperacoesSpinboxvarRadiciacao = StringVar()
-        OperacoesSpinboxRadiciacao = ttk.Spinbox(
+        OperacoesSpinvarRadiciacao = IntVar()
+        OperacoesSpinRadiciacao = ttk.Spinbox(
             BaseLabelframeOperacoes,
             from_=0,
             to=100,
-            textvariable=OperacoesSpinboxvarRadiciacao
+            textvariable=OperacoesSpinvarRadiciacao
         )
-        OperacoesSpinboxRadiciacao.configure(width=3)
-        OperacoesSpinboxRadiciacao.grid(column=5, row=1, padx=10)
-        OperacoesSpinboxRadiciacao.set(0)
+        OperacoesSpinRadiciacao.configure(width=3)
+        OperacoesSpinRadiciacao.grid(column=5, row=1, padx=10)
+        OperacoesSpinRadiciacao.set(
+            m.operacoes_disponiveis[e.RADICIACAO + 3]
+        )
 
         # Labelframe para os limites
         BaseLabelframeLimites = ttk.Labelframe(
@@ -206,7 +218,7 @@ class gerassoins():
         )
         LimitesLabelK.grid(column=0, row=1)
         # Spin KDe
-        LimitesSpinvarKDe = StringVar()
+        LimitesSpinvarKDe = IntVar()
         LimitesSpinKDe = ttk.Spinbox(
             BaseLabelframeLimites,
             from_=-100,
@@ -215,9 +227,9 @@ class gerassoins():
         )
         LimitesSpinKDe.configure(width=3)
         LimitesSpinKDe.grid(column=1, row=1)
-        LimitesSpinKDe.set(1)
+        LimitesSpinKDe.set(m.k_min)
         # Spin KAte
-        LimitesSpinvarKAte = StringVar()
+        LimitesSpinvarKAte = IntVar()
         LimitesSpinKAte = ttk.Spinbox(
             BaseLabelframeLimites,
             from_=-100,
@@ -226,7 +238,7 @@ class gerassoins():
         )
         LimitesSpinKAte.configure(width=3)
         LimitesSpinKAte.grid(column=2, row=1)
-        LimitesSpinKAte.set(10)
+        LimitesSpinKAte.set(m.k_max)
 
         # Label X
         LimitesLabelX = ttk.Label(
@@ -235,7 +247,7 @@ class gerassoins():
         )
         LimitesLabelX.grid(column=0, row=2)
         # Spin XDe
-        LimitesSpinvarXDe = StringVar()
+        LimitesSpinvarXDe = IntVar()
         LimitesSpinXDe = ttk.Spinbox(
             BaseLabelframeLimites,
             from_=-100,
@@ -244,9 +256,9 @@ class gerassoins():
         )
         LimitesSpinXDe.configure(width=3)
         LimitesSpinXDe.grid(column=1, row=2)
-        LimitesSpinXDe.set(1)
+        LimitesSpinXDe.set(m.x_min)
         # Spin XAte
-        LimitesSpinvarXAte = StringVar()
+        LimitesSpinvarXAte = IntVar()
         LimitesSpinXAte = ttk.Spinbox(
             BaseLabelframeLimites,
             from_=-100,
@@ -255,7 +267,7 @@ class gerassoins():
         )
         LimitesSpinXAte.configure(width=3)
         LimitesSpinXAte.grid(column=2, row=2)
-        LimitesSpinXAte.set(10)
+        LimitesSpinXAte.set(m.x_max)
 
         # Label Precisao Decimal
         LimitesLabelPrecisaoDecimal = ttk.Label(
@@ -271,7 +283,7 @@ class gerassoins():
         LimitesSpinPrecisaoDecimalDe.grid(column=1, row=3)
         LimitesSpinPrecisaoDecimalDe.set(0)
         # Spin Precisao Decimal Ate
-        LimitesSpinvarPrecisaoDecimalAte = StringVar()
+        LimitesSpinvarPrecisaoDecimalAte = IntVar()
         LimitesSpinPrecisaoDecimalAte = ttk.Spinbox(
             BaseLabelframeLimites,
             from_=0,
@@ -280,7 +292,7 @@ class gerassoins():
         )
         LimitesSpinPrecisaoDecimalAte.configure(width=3)
         LimitesSpinPrecisaoDecimalAte.grid(column=2, row=3)
-        LimitesSpinPrecisaoDecimalAte.set(2)
+        LimitesSpinPrecisaoDecimalAte.set(m.precisao_decimal)
 
         # Label Equacoes
         LimitesLabelEquacoes = ttk.Label(
@@ -296,7 +308,7 @@ class gerassoins():
         LimitesSpinEquacoesDe.grid(column=1, row=4)
         LimitesSpinEquacoesDe.set(0)
         # Spin Equacoes Ate
-        LimitesSpinvarEquacoesAte = StringVar()
+        LimitesSpinvarEquacoesAte = IntVar()
         LimitesSpinEquacoesAte = ttk.Spinbox(
             BaseLabelframeLimites,
             from_=0,
@@ -305,12 +317,12 @@ class gerassoins():
         )
         LimitesSpinEquacoesAte.configure(width=3)
         LimitesSpinEquacoesAte.grid(column=2, row=4)
-        LimitesSpinEquacoesAte.set(40)
+        LimitesSpinEquacoesAte.set(m.eqs)
 
         BaseButtonGerar = ttk.Button(
             rootFrameBase,
             text="Gerar",
-            command=main.main,
+            command=self.gerar,
             padding=10
         )
         BaseButtonGerar.grid(
