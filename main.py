@@ -7,7 +7,7 @@ from tkinter import Tk
 # operacoes_disponiveis[OPERACAO + 3] indica a quantidade permitida de
 # ocorrencias de OPERACAO nas equacoes
 global operacoes_disponiveis
-operacoes_disponiveis = [0, 1, 1, 0, 1, 1, 0]
+operacoes_disponiveis = [1, 0, 0, 0, 0, 0, 0]
 
 # Lista de contagem das operacoes ja utilizadas
 global operacoes_utilizadas
@@ -232,9 +232,9 @@ def saida(expr):
         elif expr.tipo == e.RADICIACAO:
             operandos[1] = " \"\" sup " + operandos[1]
             operandos[0] = " sqrt "     + operandos[0]
-
-            # Troca ordem strings
-            operandos[0], operandos[1] = operandos[1], operandos[0]
+            return operandos[1] % saida(expr.opdos[1]) \
+                 + sinal                               \
+                 + operandos[0] % saida(expr.opdos[0])
 
         return operandos[0] % saida(expr.opdos[0]) \
              + sinal                               \
