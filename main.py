@@ -7,7 +7,7 @@ from tkinter import Tk
 # operacoes_disponiveis[OPERACAO + 3] indica a quantidade permitida de
 # ocorrencias de OPERACAO nas equacoes
 global operacoes_disponiveis
-operacoes_disponiveis = [1, 0, 0, 0, 0, 0, 0]
+operacoes_disponiveis = [0, 1, 1, 0, 1, 1, 0]
 
 # Lista de contagem das operacoes ja utilizadas
 global operacoes_utilizadas
