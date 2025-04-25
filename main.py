@@ -233,6 +233,9 @@ def saida(expr):
             operandos[1] = " \"\" sup " + operandos[1]
             operandos[0] = " sqrt "     + operandos[0]
 
+            # Troca ordem strings
+            operandos[0], operandos[1] = operandos[1], operandos[0]
+
         return operandos[0] % saida(expr.opdos[0]) \
              + sinal                               \
              + operandos[1] % saida(expr.opdos[1])

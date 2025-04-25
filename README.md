@@ -1,5 +1,5 @@
 # gerassoins
-Um gerador de equações. An equations generator.
+Um gerador de equações para fins educacionais. An equations generator for educational purposes.
 
 ## Requirements
 
