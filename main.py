@@ -153,7 +153,10 @@ def saida(expr):
 
         if   expr.tipo == e.IGUALDADE:   sinal = " = "
         elif expr.tipo == e.ADICAO:      sinal = " + "
-        elif expr.tipo == e.SUBTRACAO:   sinal = " - "
+        elif expr.tipo == e.SUBTRACAO:
+            sinal = " - "
+            if n.mod(expr.opdos[1].tipo) == e.ADICAO:
+                operandos[1] = " { ( %s ) } "
         elif expr.tipo == e.MULTIPLICACAO:
             if  expr.opdos[0].tipo != e.INCOGNITA \
             and expr.opdos[1].tipo != e.INCOGNITA:
