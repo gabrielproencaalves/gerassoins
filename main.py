@@ -3,6 +3,7 @@ import exp_test as et
 import exp_debug as edbg
 import random as r
 import fracs as f
+import nutils as n
 
 # Lista do numero de repeticoes permitidas para cada operacao onde
 # operacoes_disponiveis[OPERACAO + 3] indica a quantidade permitida de
