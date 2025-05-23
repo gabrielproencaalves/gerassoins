@@ -20,7 +20,6 @@ def denominador(frac):
     assert et.e_divisao(frac), "Trying to extract a non-fraction denominator"
     return frac.opdos[1]
 
-
 # Retorna nova exp resultante da soma das fracoes frac0 e frac1
 def somar(frac0, frac1):
     return e.exp(e.DIVISAO, [
@@ -99,66 +98,5 @@ def razao(expr):
                        / expr.opdos[1].opdos[0],
                        0
                      ]
-    # Retorna expressao
-    return expr
-
-# Torna uma fracao expr em uma equivalente, porem, com menos fatores no
-# denominador e no numerador
-def simplificar(expr):
-    # Se a exp for uma fracao de produtos de fatores primos
-    if  et.e_divisao(expr)                    \
-        and et.e_multiplicacao(expr.opdos[0]) \
-        and et.e_multiplicacao(expr.opdos[1]):
-
-        # Define variaveis para referencia e para iteracao
-        menor_produto     = None
-        menor_produto_len = None
-        maior_produto     = None
-        maior_produto_len = None
-        i = 1
-        j = 1
-
-        # Define qual produto possui mais fatores e qual possui menos
-        if len(expr.opdos[0].opdos) < len(expr.opdos[1].opdos):
-            menor_produto = expr.opdos[0].opdos
-            maior_produto = expr.opdos[1].opdos
-        else:
-            menor_produto = expr.opdos[1].opdos
-            maior_produto = expr.opdos[0].opdos
-
-        # Armazena o a quantidade de fatores de cada produto para economizar
-        # processamento
-        menor_produto_len = len(menor_produto)
-        maior_produto_len = len(maior_produto)
-
-        # Percorre os fatores dos produtos, eliminando os comuns
-        while i < menor_produto_len:
-            # Se encontrar um fator comum
-            if menor_produto[i].opdos[0] == maior_produto[j].opdos[0]:
-                # Remova-o do denominador e do numerador
-                del(menor_produto[i], maior_produto[j])
-                # E atualize o tamanho das listas
-                menor_produto_len -= 1
-                maior_produto_len -= 1
-            # Senao
-            else:
-            # Mire para o proximo fator,
-            # seja do numerador, seja do denominador
-                if menor_produto[i].opdos[0] < maior_produto[j].opdos[0]:
-                    i += 1
-                else:
-                    j += 1
-                    if j >= maior_produto_len:
-                        break
-
-        # Se todos os fatores do produto do numerador foram removidos
-        if len(expr.opdos[0].opdos) == 1:
-            # Simplifique tudo para um inteiro 1
-            expr.opdos[0] = exp(e.VALOR, [1, 0])
-
-        # Se todos os fatores do produto do denominador foram removidos
-        if len(expr.opdos[1].opdos) == 1:
-            # Simplifique tudo para um inteiro 1
-            expr.opdos[1] = e.exp(e.VALOR, [1, 0])
     # Retorna expressao
     return expr
