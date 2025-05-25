@@ -4,7 +4,7 @@ Um gerador de equações para fins educacionais. An equations generator for educ
 ## Requirements
 
 * Python 3.*
-* GNU Roff (a.k.a. groff)
+* GNU Roff 1.22.4 (a.k.a. groff)
 
 ## Usage
 
