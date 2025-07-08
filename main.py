@@ -206,6 +206,27 @@ def mostrar_exp(expr):
     return str(expr.opdos[0])
 
 
+# Delimita uma expressao escolhendo automaticamente parenteses, colchetes ou
+# chaves e a retorna em formato de string
+def delimitar_exp(expr):
+    # expr em formato de expressao groff
+    expr_str = saida(expr)
+
+    # Se houver chaves
+    if '\\{' in expr_str:
+        # Usar parenteses
+        return " { ( %s ) } "
+    # Se houver colchetes
+    if '[' in expr_str:
+        # Usar chaves
+        return " { \\{ %s \\} } "
+    # Se houver parenteses
+    if '(' in expr_str:
+        # Usar colchetes
+        return " { [ %s ] } "
+    # Senao, use parenteses normalmente
+    return " { ( %s ) } "
+
 # Retorna a exp fornecida reescrita em groff eqn
 def saida(expr):
     if e_operacao(expr):
