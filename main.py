@@ -238,11 +238,15 @@ def saida(expr):
         elif expr.tipo == e.SUBTRACAO:
             sinal = " - "
             if mod(expr.opdos[1].tipo) == e.ADICAO:
-                operandos[1] = " { ( %s ) } "
+                operandos[1] = delimitar_exp(expr.opdos[1])
+
         elif expr.tipo == e.MULTIPLICACAO:
             if  expr.opdos[0].tipo != e.INCOGNITA \
             and expr.opdos[1].tipo != e.INCOGNITA:
-                operandos = [" { ( %s ) } ", " { ( %s ) } "]
+                operandos = [
+                    delimitar_exp(expr.opdos[0]),
+                    delimitar_exp(expr.opdos[1])
+                ]
                 if mod(expr.opdos[0].tipo) != e.ADICAO:
                     operandos[0] = " { %s } "
             elif expr.opdos[0].tipo == e.INCOGNITA \
